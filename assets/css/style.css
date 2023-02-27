@@ -1,4 +1,6 @@
-/* * {
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Oswald&display=swap');
+
+*{
     box-sizing: border-box;
     font-family: 'nunito, sans serif';
     text-align: center;
@@ -9,18 +11,19 @@ body {
     background: goldenrod;
 }
 
-h1 {
+/* h1 {
     font-size: 2rem;
     font-style: italic;
     margin: auto;
     text-align: center;
-}
-*/
-#battelship-hit {
-    background-image: url(..images/battleship-hit.webp);
+} */
+
+/* #battleship-hit {
+    background-image: url(/workspace/Better-Ships-that-Battle-Better/workspace/Better-Ships-that-Battle-Better/assets/images/battleship-hit.webp);
     height: 35vh;
+    width: fit-content;
     background-repeat: no-repeat;
     margin-left: auto;
     margin-right: auto;
     background-position: center;
-}
+} */
