@@ -1,16 +1,16 @@
-# core.Microsoft*
-# core.mongo*
-# core.python*
-# env.py
-# __pycache__/
-# *.py[cod]
-# node_modules/
-# .github/
-
 core.Microsoft*
 core.mongo*
 core.python*
 env.py
 __pycache__/
 *.py[cod]
-creds.json
+node_modules/
+.github/
+
+# core.Microsoft*
+# core.mongo*
+# core.python*
+# env.py
+# __pycache__/
+# *.py[cod]
+# creds.json
