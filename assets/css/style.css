@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Oswald&display=swap');
+* {
+	box-sizing: border-box
+}
+
+body {
+	font-family: 'Lato', 'sans-serif';
+	margin: 0;
+	padding: 0;
+	font-weight: 300
+}
+
+#image {
+
+	background-image: url(../images/battleship-hit.webp);
+	background-position-x: 20%;
+	margin-left: auto;
+	margin-right: auto;
+	outline: solid;
+	color: #7112ee;
+	outline-color: #7112ee;
+	width: 30vw
+}
