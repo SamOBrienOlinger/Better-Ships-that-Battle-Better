@@ -9,10 +9,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
     <title>Python Terminal by Code Institute</title>
+    <!-- <link rel="icon" type="image/png" href="https://i.imgur.com/nM6YJRs.png"> -->
+    <a href="https://imgur.com/0bj5u5D"><img src="https://i.imgur.com/0bj5u5D.png" title="source: imgur.com" /></a>
     <style>
+
         body {
             font-family: Arial;
         }
+
+        #image {
+            height: 30px;
+            width: 60px;
+            margin: 0;
+            z-index: -1;
+            width: 100%;
+            height: auto;
+        }
+
+        #terminal {
+                z-index: +1;
+                position: absolute;
+                top: 450px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
 
         /**
         * Default styles for xterm.js
@@ -158,13 +178,16 @@
         button {
             width: 200px;
             height: 40px;
-            background-color: #E84610;
+            background-color: #7958d3;
             border: 1px solid grey;
             color: white;
             text-transform: uppercase;
             margin: 10px;
             border-radius: 8px;
         }
+
+
+
     </style>
 </head>
 
