@@ -3,14 +3,14 @@
 
 <head>
     
-    <!-- <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script> -->
-    <!-- <style>body{font-family:Arial}.xterm{font-feature-settings:"liga"0;position:relative;user-select:none;-ms-user-select:none;-webkit-user-select:none}.xterm.focus, .xterm:focus{outline:none}.xterm .xterm-helpers{position:absolute;top:0;z-index:5}.xterm .xterm-helper-textarea{padding:0;border:0;margin:0;position:absolute;opacity:0;left:-9999em;top:0;width:0;height:0;z-index:-5;white-space:nowrap;overflow:hidden;resize:none}.xterm .composition-view{background:#000;color:#FFF;display:none;position:absolute;white-space:nowrap;z-index:1}.xterm .composition-view.active{display:block}.xterm .xterm-viewport{background-color:#000;overflow-y:scroll;cursor:default;position:absolute;right:0;left:0;top:0;bottom:0;background-color:rgb(0, 0, 0);width:730px}.xterm .xterm-screen{position:relative}.xterm .xterm-screen canvas{position:absolute;left:0;top:0}.xterm .xterm-scroll-area{visibility:hidden}.xterm-char-measure-element{display:inline-block;visibility:hidden;position:absolute;top:0;left:-9999em;line-height:normal}.xterm{cursor:text}.xterm.enable-mouse-events{cursor:default}.xterm.xterm-cursor-pointer{cursor:pointer}.xterm.column-select.focus{cursor:crosshair}.xterm .xterm-accessibility, .xterm .xterm-message{position:absolute;left:0;top:0;bottom:0;right:0;z-index:10;color:transparent}.xterm .live-region{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.xterm-dim{opacity:0.5}.xterm-underline{text-decoration:underline}button{width:200px;height:40px;background-color:#E84610;border:1px solid grey;color:white;text-transform:uppercase;margin:10px;border-radius:8px}</style></head> -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
+    <style>body{font-family:Arial}.xterm{font-feature-settings:"liga"0;position:relative;user-select:none;-ms-user-select:none;-webkit-user-select:none}.xterm.focus, .xterm:focus{outline:none}.xterm .xterm-helpers{position:absolute;top:0;z-index:5}.xterm .xterm-helper-textarea{padding:0;border:0;margin:0;position:absolute;opacity:0;left:-9999em;top:0;width:0;height:0;z-index:-5;white-space:nowrap;overflow:hidden;resize:none}.xterm .composition-view{background:#000;color:#FFF;display:none;position:absolute;white-space:nowrap;z-index:1}.xterm .composition-view.active{display:block}.xterm .xterm-viewport{background-color:#000;overflow-y:scroll;cursor:default;position:absolute;right:0;left:0;top:0;bottom:0;background-color:rgb(0, 0, 0);width:730px}.xterm .xterm-screen{position:relative}.xterm .xterm-screen canvas{position:absolute;left:0;top:0}.xterm .xterm-scroll-area{visibility:hidden}.xterm-char-measure-element{display:inline-block;visibility:hidden;position:absolute;top:0;left:-9999em;line-height:normal}.xterm{cursor:text}.xterm.enable-mouse-events{cursor:default}.xterm.xterm-cursor-pointer{cursor:pointer}.xterm.column-select.focus{cursor:crosshair}.xterm .xterm-accessibility, .xterm .xterm-message{position:absolute;left:0;top:0;bottom:0;right:0;z-index:10;color:transparent}.xterm .live-region{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}.xterm-dim{opacity:0.5}.xterm-underline{text-decoration:underline}button{width:200px;height:40px;background-color:#E84610;border:1px solid grey;color:white;text-transform:uppercase;margin:10px;border-radius:8px}</style></head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Terminal by Code Institute</title>
     <!-- <link rel="icon" type="image/webp" ahref='https://i.imgur.com/nM6YJRs.png">  -->
 </head>
@@ -24,7 +24,7 @@
 <main>
 
     
-    <div id="image"
+    <div id="image">
 
         <img id="image" src="https://i.imgur.com/0bj5u5D.png" title="source: imgur.com"></a>
                 
@@ -34,35 +34,52 @@
     <button onclick="window.location.reload()">Run Program</button>
     
     <div id="terminal"></div>
+
     <script>
-        var term = new Terminal({
-            cols: 80,
-            rows: 24
-        });
+        var term=new Terminal({cols:80,rows:24});
+
         term.open(document.getElementById('terminal'));
+
+        term.writeln('Running startup command: python3 run.py');
+        
         term.writeln('');
-
-        var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ?
-            (
-                ':' + location.port) : '') + '/');
-
-        ws.onopen = function () {
-            new attach.attach(term, ws);
-        };
-
-        ws.onerror = function (e) {
-            console.log(e);
-        };
-        // Set focus in the terminal
+        
+        var ws=new WebSocket(location.protocol.replace('http','ws')+'//'+location.hostname+(location.port?(':'+location.port):'')+'/');
+        ws.onopen=function(){new attach.attach(term,ws)};ws.onerror=function(e){console.log(e)};
         document.getElementsByClassName("xterm-helper-textarea")[0].focus();
-    </script>
+        
 
-    <!-- <script src="assets/js/script.js"></script>
 
-    <script src='controllers/index.js'></script> -->
 
-</main>
+    // <script>
+    //     var term = new Terminal({
+    //         cols: 80,
+    //         rows: 24
+    //     });
+    //     term.open(document.getElementById('terminal'));
+    //     term.writeln('');
+
+    //     var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ?
+    //         (
+    //             ':' + location.port) : '') + '/');
+
+    //     ws.onopen = function () {
+    //         new attach.attach(term, ws);
+    //     };
+
+    //     ws.onerror = function (e) {
+    //         console.log(e);
+    //     };
+    //     // Set focus in the terminal
+    //     document.getElementsByClassName("xterm-helper-textarea")[0].focus();
+    // </script>
+
+    <script src="assets/js/script.js"></script>
+
+    <script src='controllers/index.js'></script>
+
+
 
 </body>
-
+</main>
 </html>
