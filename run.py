@@ -121,7 +121,7 @@ def new_game():
 
     turn_count = 0
     while turn_count < MAX_TURNS:
-        
+
         print_board(player_board)
 
         print("Fire at the Enemy to sink their ships")

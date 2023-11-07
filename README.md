@@ -1,8 +1,9 @@
-# **Ships that Battle**
+# **Better Ships that Battle Better**
 
-For my third Portfolio Project submitted as part of the Code Institute's Diploma in full-stack software development course, I created a board game, commonly known as battleship, called ' Ships that Battle'. This is a Python terminal that runs using the Code Institute mock terminal on Heroku.   
+![Hit ship](assets/images/battleship-hit.webp)
+   
 
-![Responsivity on multiple screens](assets/images/README.md-responsive.png)
+<!-- ![Responsivity on multiple screens](assets/images/README.md-responsive.png)
 
 - **[Click Here]( https://ships-that-battle.herokuapp.com/)** to see the deployed website. 
 
@@ -203,3 +204,4 @@ Code used to develop the game board was based on battleship code developed by [G
 
 **[Click Here](#contents)** to return to Contents
 
+ -->
