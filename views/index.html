@@ -1,23 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Our Flag Means Infinite Loop of Doom</title>
+</head>
 <body>
-    <button onclick="window.location.reload()">Run Program</button>
-    <div id="terminal"></div>
-
+    <header>
+        <h1>!Our Flag Means Infinite Loop of Doom!</h1>
+        <div>
+            <a><img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag"  href="../assets/images/pirate-queen-flag.jpg" /><a>
+        </div>
+    </header>
+    <main>
+        <div>
+            <a><img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen"  href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg" /><a>
+        </div>
+        <button onclick="window.location.reload()">Fire Your Cannonballs</button>
+        <div id="terminal"></div>
+    </main>
+    <footer>
+        <ul>
+            <li>Better Ships that Battle Better &copy;</li>
+            <li>This website was created by Sam O'Brien-Olinger which evolved out of a portfolio project for a third-level education course and has no commercial purpose.</li>
+            <li>
+                <a href="https://github.com/SamOBrienOlinger" 
+                    target="_blank"
+                    aria-label="Link to Sam's GitHub profile (opens in a new tab)"><i
+                    class="fa-brands fa-github-alt"></i></a>
+            </li>
+            <li>    
+                <a href="https://www.linkedin.com/in/sam-o-brien-olinger-b658283a/" 
+                    target="_blank"
+                    aria-label="Link to Sam's LinkedIn profile (opens in a new tab)"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            </li>
+        </ul>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
     <script>
+        // Your xterm.js code here
         var term = new Terminal({
             cols: 80,
             rows: 24
         });
         term.open(document.getElementById('terminal'));
-        term.writeln('Running startup command: python3 run.py');
+        term.writeln('Take the Helm!');
         term.writeln('');
-
+        
         var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
             ':' + location.port) : '') + '/');
-
+        
         ws.onopen = function () {
             new attach.attach(term, ws);
         };
-
+        
         ws.onerror = function (e) {
             console.log(e);
         };
@@ -25,3 +62,87 @@
         document.getElementsByClassName("xterm-helper-textarea")[0].focus();
     </script>
 </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        
+      <title>Our Flag Means Infinite Loop of Doom</title>
+        
+    </head>
+
+<body>
+
+    <header>
+      <h1>!Our Flag Means Infinite Loop of Doom!</h1>
+
+        <div>
+
+          <a><img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag"  href="../assets/images/pirate-queen-flag.jpg" /><a>
+  
+        </div>
+
+    </header>
+  
+    <main>
+
+        <div>
+
+            <a><img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen"  href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg" /><a>
+
+        </div>    
+
+
+    <button onclick="window.location.reload()">Fire Your Cannonballs</button>
+    <div id="terminal"></div>
+
+        <script>
+            // Ensure that Terminal is defined from xterm.js
+            var term = new Terminal({
+                cols: 80,
+                rows: 24
+            });
+            term.open(document.getElementById('terminal'));
+            term.writeln('Take the Helm!');
+            term.writeln('');
+
+            var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
+                ':' + location.port) : '') + '/');
+
+            ws.onopen = function () {
+                new attach.attach(term, ws);
+            };
+
+            ws.onerror = function (e) {
+                console.log(e);
+            };
+            // Set focus in the terminal
+            document.getElementsByClassName("xterm-helper-textarea")[0].focus();
+        </script>
+    </main>
+    
+    <footer>
+        <ul>
+            <li>Better Ships that Battle Better &copy;</li>
+
+            <li>This website was created by Sam O'Brien-Olinger which evolved out of a portfolio project for a third-level education course and has no commercial purpose.</li>
+            <li>
+                <a href="https://github.com/SamOBrienOlinger" 
+                    target="_blank"
+                    aria-label="Link to Sam's GitHub profile (opens in a new tab)"><i
+                    class="fa-brands fa-github-alt"></i></a>
+            </li>
+            <li>    
+                <a href="https://www.linkedin.com/in/sam-o-brien-olinger-b658283a/" 
+                    target="_blank"
+                    aria-label="Link to Sam's LinkedIn profile (opens in a new tab)"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            </li>
+        </ul>
+    </footer>
+
+  </body>
+</html> -->
