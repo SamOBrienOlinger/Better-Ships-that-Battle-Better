@@ -1,21 +1,6 @@
-"""
-Key for map
-
-X = hit
-' ' = free space
-'-' = missed shot
-
-Messages for Player
-
-"Deja Vu, try a different location on the map" = \
-    enter a row number and column letter not previously used
-"Congratulations Captain, you rule the waves!" = \
-    Player wins
-"Captain, it's too late, you ran out of cannonballs" = \
-    Player loses
-
-"""
 from random import randint
+import pyfiglet
+from pyfiglet import Figlet, print_figlet
 
 GAME_INSTRUCTIONS = """
 INSTRUCTIONS!!!
@@ -36,11 +21,32 @@ MAX_TURNS = 10
 MAX_SHIPS = 5
 
 
+# def find_suitable_widths(text, max_width=300):
+#     for letter_width in range(1, max_width + 1):
+#         try:
+#             custom_fig = Figlet(font='block', width=letter_width, direction='smushed')
+#             result = custom_fig.renderText(text)
+#             if all(len(line) <= max_width for line in result.split('\n')):
+#                 return letter_width
+#         except pyfiglet.CharNotPrinted:
+#             pass
+#     return max_width
+
+# def display_military_text(text, overall_width, letter_width):
+#     """
+#     This function displays military-style text.
+#     """
+#     custom_fig = Figlet(font='block', width=letter_width, direction='smushed')
+#     result = custom_fig.renderText(text)
+#     adjusted_result = result.center(overall_width)
+#     print(adjusted_result)
+
+
+
 def print_board(board):
     """
     This function creates the layout of the board
     """
-
     print("    A   B   C   D   E   F   G   H")
     print("  +-------------------------------+")
     row_number = 1
@@ -52,7 +58,7 @@ def print_board(board):
 
 def initialize_board(board, max_ships):
     """
-    Places `max_ships` ships at random on given board.
+    Places `max_ships` ships at random on the given board.
     """
     for _ in range(max_ships):
         ship_row, ship_column = randint(0, 7), randint(0, 7)
@@ -64,7 +70,7 @@ def initialize_board(board, max_ships):
 
 def guess_ship_location():
     """
-    This function checks that input is valid and returns coordinates
+    This function checks that input is valid and returns coordinates.
     """
     letters_to_numbers = {
         "A": 0,
@@ -84,7 +90,7 @@ def guess_ship_location():
 
     column = input("Where will you fire your cannons?!? A - H: \n").upper()
     while column not in "ABCDEFGH":
-        print("Your shots must fired on the map, between A - H")
+        print("Your shots must be fired on the map, between A - H")
         column = input("Where will you fire your cannons?!? A - H: \n").upper()
 
     return int(row) - 1, letters_to_numbers[column]
@@ -92,7 +98,7 @@ def guess_ship_location():
 
 def all_ships_hit(board):
     """
-    This function tracks and adds up hits
+    This function tracks and adds up hits.
     """
     count = 0
     for row in board:
@@ -106,12 +112,27 @@ def welcome_user(name):
     print(f"Welcome Captain {name}")
 
 
-def new_game():
-    # Boards
-    secret_board = [[" "] * 8 for x in range(8)]
-    player_board = [[" "] * 8 for x in range(8)]
+def display_military_text(text, letter_width):
+    """
+    This function displays military-style text.
+    """
+    custom_fig = Figlet(font='block', width=letter_width, direction='smushed')
+    result = custom_fig.renderText(text)
+    print(result)
 
-    # Tracks hits, misses and repeated coordinates
+
+def new_game():
+    letter_width = 50
+    # letter_width = find_suitable_widths('Ships That Battle', max_width=300)  # Find a suitable width
+    overall_width = 209  # Adjust the overall width as needed
+    display_military_text('Ships That Battle', overall_width)  # Display military-style text
+
+
+    # Boards
+    secret_board = [[" "] * 8 for _ in range(8)]
+    player_board = [[" "] * 8 for _ in range(8)]
+
+    # Tracks hits, misses, and repeated coordinates
     initialize_board(secret_board, MAX_SHIPS)
 
     username = input("Captain, what's your name? \n")
@@ -121,11 +142,8 @@ def new_game():
 
     turn_count = 0
     while turn_count < MAX_TURNS:
-
         print_board(player_board)
-
         print("Fire at the Enemy to sink their ships")
-        # create_board(player_board)
         row, column = guess_ship_location()
 
         if player_board[row][column] == "-":
@@ -137,7 +155,7 @@ def new_game():
             turn_count += 1
 
         else:
-            print("A miss, and a splash. Better luck next turn!")
+            print("A miss, and a splash. Better luck next time!")
             player_board[row][column] = "-"
             turn_count += 1
 
@@ -148,7 +166,7 @@ def new_game():
         print(
             "Captain, you have " +
             str(MAX_TURNS - turn_count) +
-            " cannon balls left"
+            " cannonball left"
         )
         if turn_count == MAX_TURNS:
             print(GAME_OVER_MESSAGE)
