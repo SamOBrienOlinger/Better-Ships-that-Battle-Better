@@ -1,18 +1,53 @@
-<!DOCTYPE html>
+<body>
+    <button onclick="window.location.reload()">Run Program</button>
+    <div id="terminal"></div>
+
+    <script>
+        var term = new Terminal({
+            cols: 80,
+            rows: 24
+        });
+        term.open(document.getElementById('terminal'));
+        term.writeln('Running startup command: python3 run.py');
+        term.writeln('');
+
+        var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
+            ':' + location.port) : '') + '/');
+
+        ws.onopen = function () {
+            new attach.attach(term, ws);
+        };
+
+        ws.onerror = function (e) {
+            console.log(e);
+        };
+        // Set focus in the terminal
+        document.getElementsByClassName("xterm-helper-textarea")[0].focus();
+    </script>
+</body>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Our Flag Means Infinite Loop of Doom</title>
 </head>
 <body>
     <header>
-        <h1>!Our Flag Means Infinite Loop of Doom!</h1>
-        <div class="flag">
-            <a><img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag"  href="../assets/images/pirate-queen-flag.jpg" /><a>
+        <h1>! Our Flag Means Infinite Loop of Doom ! </h1>
+        <div class="flag"> -->
+            <!-- <a><img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag"  href="../assets/images/pirate-queen-flag.jpg" /><a> -->
+                <!-- <a href="../assets/images/pirate-queen-flag.jpg">
+                    <img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag" />
+                </a>                
         </div>
     </header>
     <main>
-        <div>
-            <a><img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen"  href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg" /><a>
+        <div> -->
+            <!-- <a><img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen"  href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg" /><a> -->
+                <!-- <a href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg">
+                    <img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen" />
+                </a>
+                
         </div>
         <button onclick="window.location.reload()">Click HERE to start Firing your Cannonballs</button>
         <div id="terminal"></div>
@@ -38,30 +73,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/xterm.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xterm/3.14.5/addons/attach/attach.js"></script>
-    <script>
+    <script> -->
         // Your xterm.js code here
-        var term = new Terminal({
-            cols: 80,
-            rows: 24
-        });
-        term.open(document.getElementById('terminal'));
-        term.writeln('Take the Helm!');
-        term.writeln('');
+        // var term = new Terminal({
+        //     cols: 80,
+        //     rows: 24
+        // });
+        // term.open(document.getElementById('terminal'));
+        // term.writeln('Take the Helm!');
+        // term.writeln('');
         
-        var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
-            ':' + location.port) : '') + '/');
+        // var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
+        //     ':' + location.port) : '') + '/');
         
-        ws.onopen = function () {
-            new attach.attach(term, ws);
-        };
+        // var ws = new WebSocket('ws://8000-samobrienol-betterships-jtqkyun94nw.ws-eu107.gitpod.io');
+
+
+        // ws.onopen = function () {
+        //     new attach.attach(term, ws);
+        // };
         
-        ws.onerror = function (e) {
-            console.log(e);
-        };
+        // ws.onerror = function (e) {
+        //     console.log(e);
+        // };
         // Set focus in the terminal
-        document.getElementsByClassName("xterm-helper-textarea")[0].focus();
-    </script>
-</body>
+//         document.getElementsByClassName("xterm-helper-textarea")[0].focus();
+//     </script>
+// </body>
 </html>
 
 

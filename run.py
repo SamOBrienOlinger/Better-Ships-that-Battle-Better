@@ -1,6 +1,6 @@
 from random import randint
-import pyfiglet
-from pyfiglet import Figlet, print_figlet
+# import pyfiglet
+# from pyfiglet import Figlet, print_figlet
 
 GAME_INSTRUCTIONS = """
 INSTRUCTIONS!!!
@@ -112,20 +112,20 @@ def welcome_user(name):
     print(f"Welcome Captain {name}")
 
 
-def display_military_text(text, letter_width):
-    """
-    This function displays military-style text.
-    """
-    custom_fig = Figlet(font='block', width=letter_width, direction='smushed')
-    result = custom_fig.renderText(text)
-    print(result)
+# def display_military_text(text, letter_width):
+#     """
+#     This function displays military-style text.
+#     """
+#     custom_fig = Figlet(font='block', width=letter_width, direction='smushed')
+#     result = custom_fig.renderText(text)
+#     print(result)
 
 
 def new_game():
-    letter_width = 50
+    # letter_width = 50
     # letter_width = find_suitable_widths('Ships That Battle', max_width=300)  # Find a suitable width
-    overall_width = 209  # Adjust the overall width as needed
-    display_military_text('Ships That Battle', overall_width)  # Display military-style text
+    # overall_width = 209  # Adjust the overall width as needed
+    # display_military_text('Ships That Battle', overall_width)  # Display military-style text
 
 
     # Boards
