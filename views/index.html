@@ -1,6 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xterm.js WebSocket Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/xterm@4.11.0/dist/xterm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm@4.11.0/addons/attach/attach.js"></script>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+</head>
 <body>
-    <button onclick="window.location.reload()">Run Program</button>
     <div id="terminal"></div>
+    <script>
+        const socket = new WebSocket('wss://samobrienol-betterships-jtqkyun94nw.ws-eu107.gitpod.io/');
+        const term = new Terminal();
+        term.open(document.getElementById('terminal'));
+
+        socket.onopen = function () {
+            term.writeln('WebSocket connection opened!');
+        };
+
+        socket.onmessage = function (event) {
+            term.write(event.data);
+        };
+
+        socket.onerror = function (error) {
+            term.writeln('WebSocket error: ' + error.message);
+        };
+
+        socket.onclose = function (event) {
+            term.writeln('WebSocket connection closed with code: ' + event.code);
+        };
+
+        term.onData(data => {
+            socket.send(data);
+        });
+    </script>
+</body>
+</html>
+
+    <!-- Your xterm.js code here -->
+    <!-- 
+    <script>
+        var term = new Terminal({
+            cols: 80,
+            rows: 24
+        });
+        term.open(document.getElementById('terminal'));
+        term.writeln('Take the Helm!');
+        term.writeln('');
+
+        var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
+            ':' + location.port) : '') + '/');
+
+        ws.onopen = function () {
+            // new attach.attach(term, ws);
+        };
+
+        ws.onerror = function (e) {
+            // console.log(e);
+        };
+        // Set focus in the terminal
+        // document.getElementsByClassName("xterm-helper-textarea")[0].focus();
+    </script>
+</body>
+</html>
+
+
+
+<!-- <body>
+    <button id="terminal" onclick="window.location.reload()">Run Program</button>
+    <div id="terminal-one">
+
+        <div id="image-one">
+
+
+        </div>
+
+
+
+    </div>
 
     <script>
         var term = new Terminal({
@@ -26,7 +104,7 @@
     </script>
 </body>
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Our Flag Means Infinite Loop of Doom</title>
