@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Better Ships that Battle Better{% endblock %}
+
+{% block content %}
+<div style="max-width: 400px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: 30px;">🔑 Captain's Login</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username:</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <div style="color: #ff6666; margin-top: 5px;">
+                    {% for error in form.username.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Password:</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <div style="color: #ff6666; margin-top: 5px;">
+                    {% for error in form.password.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        {% if form.non_field_errors %}
+            <div style="color: #ff6666; margin: 15px 0;">
+                {% for error in form.non_field_errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="submit" class="btn">⚓ Set Sail</button>
+        </div>
+    </form>
+    
+    <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #004400;">
+        <p>New to the fleet?</p>
+        <a href="{% url 'register' %}" class="btn">📝 Join the Crew</a>
+    </div>
+</div>
+{% endblock %}

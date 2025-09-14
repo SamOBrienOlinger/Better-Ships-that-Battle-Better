@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Profile - Better Ships that Battle Better{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: 30px;">🏴‍☠️ Create Your Pirate Profile</h2>
+    
+    <form method="post" id="profile-form">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.pirate_name.id_for_label }}">Pirate Name:</label>
+            {{ form.pirate_name }}
+            {% if form.pirate_name.errors %}
+                <div style="color: #ff6666; margin-top: 5px;">
+                    {% for error in form.pirate_name.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div style="color: #888888; font-size: 12px; margin-top: 5px;">Choose your legendary pirate captain name</div>
+        </div>
+        
+        <div class="form-group">
+            <label>Choose Your Pirate Queen Avatar:</label>
+            <div class="pirate-queen-grid">
+                {% for queen in pirate_queens %}
+                    <div class="pirate-queen-option" data-queen-id="{{ queen.id }}">
+                        <img src="{{ queen.image_url }}" alt="{{ queen.name }}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMDAyMjAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3IiBmb250LXNpemU9IjEyIiBmaWxsPSIjMDBmZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXJhdGU8L3RleHQ+CjwvZXZnPg=='">
+                        <h4>{{ queen.name }}</h4>
+                        <p style="font-size: 12px; color: #888888;">{{ queen.historical_period }}</p>
+                        <p style="font-size: 11px;">{{ queen.region }}</p>
+                        <p style="font-size: 10px; margin-top: 10px;">{{ queen.description|truncatewords:15 }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {{ form.chosen_pirate_queen }}
+            {% if form.chosen_pirate_queen.errors %}
+                <div style="color: #ff6666; margin-top: 5px;">
+                    {% for error in form.chosen_pirate_queen.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.bio.id_for_label }}">Bio:</label>
+            {{ form.bio }}
+            {% if form.bio.errors %}
+                <div style="color: #ff6666; margin-top: 5px;">
+                    {% for error in form.bio.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div style="color: #888888; font-size: 12px; margin-top: 5px;">Tell your tale of the high seas (optional)</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.preferred_difficulty.id_for_label }}">Preferred Difficulty:</label>
+            {{ form.preferred_difficulty }}
+            {% if form.preferred_difficulty.errors %}
+                <div style="color: #ff6666; margin-top: 5px;">
+                    {% for error in form.preferred_difficulty.errors %}
+                        <div>{{ error }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div style="color: #888888; font-size: 12px; margin-top: 5px;">Choose your battle difficulty preference</div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button type="submit" class="btn">⚓ Create Profile</button>
+            <a href="{% url 'dashboard' %}" class="btn" style="margin-left: 10px;">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const queenOptions = document.querySelectorAll('.pirate-queen-option');
+    const queenSelect = document.getElementById('{{ form.chosen_pirate_queen.id_for_label }}');
+    
+    // Hide the select element
+    queenSelect.style.display = 'none';
+    
+    queenOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove selected class from all options
+            queenOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
+            // Set the select value
+            const queenId = this.getAttribute('data-queen-id');
+            queenSelect.value = queenId;
+        });
+    });
+    
+    // Set initial selection if form has a value
+    if (queenSelect.value) {
+        const selectedOption = document.querySelector(`[data-queen-id="${queenSelect.value}"]`);
+        if (selectedOption) {
+            selectedOption.classList.add('selected');
+        }
+    }
+});
+</script>
+{% endblock %}

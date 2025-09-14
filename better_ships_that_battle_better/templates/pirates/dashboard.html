@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - Better Ships that Battle Better{% endblock %}
+
+{% block content %}
+<div style="max-width: 1000px; margin: 0 auto;">
+    <h2 style="text-align: center; margin-bottom: 30px;">📊 Captain's Dashboard</h2>
+    
+    <!-- Profile Section -->
+    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-bottom: 40px;">
+        <div style="border: 1px solid #0048ff45; padding: 20px; background-color: #002200;">
+            <h3 style="text-align: center; margin-bottom: 20px;">👤 Your Profile</h3>
+            {% if profile %}
+                <div style="text-align: center;">
+                    {% if profile.chosen_pirate_queen %}
+                        <img src="{{ profile.chosen_pirate_queen.image_url }}" alt="{{ profile.chosen_pirate_queen.name }}" 
+                             style="width: 120px; height: 120px; object-fit: cover; border: 2px solid #0048ff45; margin-bottom: 15px;"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjMDAyMjAwIi8+Cjx0ZXh0IHg9IjYwIiB5PSI2NSIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3IiBmb250LXNpemU9IjE0IiBmaWxsPSIjMDBmZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXJhdGU8L3RleHQ+CjwvZXZnPg=='">
+                        <h4>{{ profile.chosen_pirate_queen.name }}</h4>
+                        <p style="font-size: 12px; color: #888888;">{{ profile.chosen_pirate_queen.historical_period }}</p>
+                    {% endif %}
+                    <h3 style="color: #0048ff45;">{{ profile.pirate_name }}</h3>
+                    <p style="color: #888888;">Captain {{ user.username }}</p>
+                    {% if profile.bio %}
+                        <p style="font-size: 14px; margin-top: 15px; font-style: italic;">"{{ profile.bio }}"</p>
+                    {% endif %}
+                    <p style="margin-top: 15px;"><strong>Preferred Difficulty:</strong> {{ profile.get_preferred_difficulty_display }}</p>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="{% url 'profile_edit' %}" class="btn">✏️ Edit Profile</a>
+                </div>
+            {% else %}
+                <div style="text-align: center;">
+                    <p>No profile created yet!</p>
+                    <a href="{% url 'profile_create' %}" class="btn">🏴‍☠️ Create Profile</a>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Stats Section -->
+        <div>
+            <h3 style="text-align: center; margin-bottom: 20px;">⚔️ Battle Statistics</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.total_games }}</div>
+                    <div>Total Battles</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.wins }}</div>
+                    <div>Victories</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.losses }}</div>
+                    <div>Defeats</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.win_rate }}%</div>
+                    <div>Win Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.avg_shots }}</div>
+                    <div>Avg Shots</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">{{ stats.total_ships_sunk }}</div>
+                    <div>Ships Sunk</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent Games Section -->
+    <div style="border: 1px solid #0048ff45; padding: 20px; background-color: #002200; margin-bottom: 30px;">
+        <h3 style="text-align: center; margin-bottom: 20px;">📜 Recent Battles</h3>
+        {% if recent_games %}
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid #0048ff45;">
+                            <th style="padding: 10px; text-align: left;">Date</th>
+                            <th style="padding: 10px; text-align: left;">Result</th>
+                            <th style="padding: 10px; text-align: left;">Difficulty</th>
+                            <th style="padding: 10px; text-align: left;">Shots Fired</th>
+                            <th style="padding: 10px; text-align: left;">Ships Sunk</th>
+                            <th style="padding: 10px; text-align: left;">Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for game in recent_games %}
+                            <tr style="border-bottom: 1px solid #004400;">
+                                <td style="padding: 10px;">{{ game.played_at|date:"M d, Y H:i" }}</td>
+                                <td style="padding: 10px;">
+                                    {% if game.result == 'win' %}
+                                        <span style="color: #0048ff45;">🏆 Victory</span>
+                                    {% else %}
+                                        <span style="color: #ff6666;">💀 Defeat</span>
+                                    {% endif %}
+                                </td>
+                                <td style="padding: 10px;">{{ game.get_difficulty_display }}</td>
+                                <td style="padding: 10px;">{{ game.shots_fired }}</td>
+                                <td style="padding: 10px;">{{ game.ships_sunk }}/5</td>
+                                <td style="padding: 10px;">
+                                    {% if game.duration_seconds %}
+                                        {{ game.duration_seconds }}s
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="{% url 'game_history' %}" class="btn">📜 View All History</a>
+            </div>
+        {% else %}
+            <div style="text-align: center; color: #888888;">
+                <p>No battles fought yet, Captain!</p>
+                <p>Ready to set sail?</p>
+            </div>
+        {% endif %}
+    </div>
+    
+    <!-- Action Buttons -->
+    <div style="text-align: center;">
+        <a href="{% url 'game' %}" class="btn" style="font-size: 18px; padding: 15px 30px; margin: 0 10px;">⚓ Battle Now</a>
+        <a href="{% url 'game_history' %}" class="btn" style="margin: 0 10px;">📜 Full History</a>
+        {% if not profile %}
+            <a href="{% url 'profile_create' %}" class="btn" style="margin: 0 10px;">🏴‍☠️ Create Profile</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
