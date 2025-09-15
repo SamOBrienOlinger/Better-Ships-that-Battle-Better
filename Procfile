@@ -1,1 +1,1 @@
-web: node index.js
+web: gunicorn better_ships_that_battle_better.wsgi:application --bind 0.0.0.0:$PORT
