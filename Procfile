@@ -1,1 +1,1 @@
-web: gunicorn better_ships_that_battle_better.wsgi:application --bind 0.0.0.0:$PORT
+web: gunicorn better_ships_that_battle_better.better_ships_that_battle_better.wsgi:application --bind 0.0.0.0:$PORT
