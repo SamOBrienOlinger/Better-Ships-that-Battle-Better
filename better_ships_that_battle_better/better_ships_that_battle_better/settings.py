@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'pirates',
+    'better_ships_that_battle_better.pirates',
 ]
 
 MIDDLEWARE = [
