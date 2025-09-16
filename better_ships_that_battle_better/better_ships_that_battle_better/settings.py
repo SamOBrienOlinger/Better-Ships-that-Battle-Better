@@ -76,14 +76,23 @@ WSGI_APPLICATION = 'better_ships_that_battle_better.better_ships_that_battle_bet
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # Use DATABASE_URL if available (for Heroku), otherwise use SQLite
-import dj_database_url
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
-        conn_max_age=600,
-        conn_health_checks=True,
-    )
-}
+try:
+    import dj_database_url
+    DATABASES = {
+        'default': dj_database_url.config(
+            default='sqlite:///' + str(BASE_DIR / 'db.sqlite3'),
+            conn_max_age=600,
+            conn_health_checks=True,
+        )
+    }
+except ImportError:
+    # Fallback for local development without dj_database_url
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
