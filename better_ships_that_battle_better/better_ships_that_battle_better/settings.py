@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'better_ships_that_battle_better.better_ships_that_battle_better.urls'
+ROOT_URLCONF = 'better_ships_that_battle_better.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'better_ships_that_battle_better.better_ships_that_battle_better.wsgi.application'
+WSGI_APPLICATION = 'better_ships_that_battle_better.wsgi.application'
 
 
 # Database
