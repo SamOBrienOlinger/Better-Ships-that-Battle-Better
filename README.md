@@ -1,207 +1,280 @@
 # **Better Ships that Battle Better**
 
 ![Hit ship](assets/images/battleship-hit.webp)
-   
 
-<!-- ![Responsivity on multiple screens](assets/images/README.md-responsive.png)
+A Django-powered pirate-themed naval battleship game featuring user authentication, battle statistics, and immersive pirate captain gameplay.
 
-- **[Click Here]( https://ships-that-battle.herokuapp.com/)** to see the deployed website. 
+## **Live Deployment**
 
-- To view the repository on Github **[Click Here](https://github.com/SamOBrienOlinger/Ships-that-Battle)**.
-
+- **[Play the Game](https://better-ships-battle-better.herokuapp.com/)** - Main deployment on Heroku
+- **[Alternative Link](https://pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com/)** - Secondary deployment
+- **[GitHub Repository](https://github.com/SamOBrienOlinger/Better-Ships-that-Battle-Better)** - View the source code
 
 ## **Summary**
-  This interactive game provides users with an easy way to 'fire cannonballs' at a computer ‘enemy’s fleet of ships’. The game is based on the well-known board game ‘Battleship’, to learn more about this game **[Click Here]( https://en.wikipedia.org/wiki/Battleship_game)**.
 
-
+This interactive web-based battleship game transforms the classic naval warfare experience into an immersive pirate adventure. Players create pirate captain profiles, engage in tactical 8x8 grid battles against computer opponents, and track their naval conquest statistics. Built with Django and deployed on Heroku, the game features a complete user authentication system, historical battle tracking, and a beautiful pirate-themed interface.
 
 ## **[Contents](#contents)**
 
-1.	**[How to Play](#how-to-play)**
-2.	**[Features](#features)**
-3.	**[Features Left to Implement](#features-left-to-implement)**
-4.	**[Data Model](#data-model)**
-5.	**[Testing](#testing)**
-6.	**[Bugs](#bugs)**
-7.	**[Deployment](#deployment)**
-8.	**[Credits](#credits)**
-9.	**[Acknowledgements](#acknowledgements)** 
+1. **[How to Play](#how-to-play)**
+2. **[Features](#features)**
+3. **[Technology Stack](#technology-stack)**
+4. **[Game Mechanics](#game-mechanics)**
+5. **[User System](#user-system)**
+6. **[Deployment](#deployment)**
+7. **[Installation](#installation)**
+8. **[Credits](#credits)**
+9. **[Acknowledgements](#acknowledgements)**
 
 ## **[How to Play](#how-to-play)**
 
-In this version of the classic Battleship game, the player enters their name and an empty board is displayed. Five randomly located ships are generated which the player cannot see. 
+### Getting Started
+1. **Visit the Game**: Navigate to the [live deployment](https://better-ships-battle-better.herokuapp.com/)
+2. **Choose Your Path**: 
+   - **Guest Play**: Jump straight into battle without registration
+   - **Create Account**: Register for full pirate captain experience with statistics tracking
 
-The player must guess the coordinates of the hidden ships by choosing a row number and a column letter. The player has ten ‘cannonballs’ or turns to take in order to ‘hit’ the hidden ships. 
+### Pirate Captain Setup (Registered Users)
+1. **Create Your Profile**: Choose your pirate captain name and write your naval biography
+2. **Select Your Avatar**: Pick from historical Pirate Queen avatars
+3. **Set Difficulty**: Choose your challenge level:
+   - **Easy**: 20 cannonballs
+   - **Normal**: 15 cannonballs  
+   - **Hard**: 10 cannonballs
 
-Hits are indicted by ‘X’ and misses ‘-‘
-
-If the player hits all of the computer’s ships they win the game. If they fire all of their cannonballs and fail to do so, they lose the game.  
+### Naval Combat
+1. **Battle Grid**: Face an 8x8 tactical grid with 5 hidden enemy ships
+2. **Fleet Composition**: Hunt down the enemy fleet:
+   - Carrier (5 spaces)
+   - Battleship (4 spaces)
+   - Cruiser (3 spaces)
+   - Submarine (3 spaces)
+   - Destroyer (2 spaces)
+3. **Fire Cannonballs**: Click grid coordinates to launch attacks
+4. **Track Results**: 
+   - 💥 Direct hits on enemy ships
+   - 🌊 Misses in open water
+   - 🚢 Sunken ships
+5. **Victory Conditions**: Sink all enemy ships before running out of ammunition
 
 ## **[Features](#features)**
 
-### Existing features
-* Random board generation
-  * Ships are randomly placed on the board by the computer so that the player cannot see where they are.
+### 🏴‍☠️ **Pirate-Themed Naval Combat**
+- Interactive 8x8 battleship grid with tactical gameplay
+- 5 strategically placed ships with realistic naval vessel sizes
+- Real-time battle feedback with naval emojis and animations
+- Strategic ammunition management system based on difficulty
 
+### 👤 **Complete User Authentication System**
+- User registration with automatic pirate profile creation
+- Secure login/logout with Django session management
+- Guest play option for immediate access
+- Protected routes for authenticated features
 
-  ![player board](assets/images/README.md-player-board.png)
+### 🏴‍☠️ **Pirate Captain Profile System**
+- Custom pirate captain names and biographical stories
+- Historical Pirate Queen avatar selection system
+- Difficulty preference settings with ammunition scaling
+- Profile editing and management interface
 
-* Accepts player’s input.
+### 📊 **Battle Statistics & History Tracking**
+- Comprehensive battle history with timestamps
+- Win/loss statistics and win rate calculations
+- Average shots fired and total ships sunk metrics
+- Game duration recording and performance analytics
+- AJAX-powered real-time game result saving
 
-* Validates coordinates input by player.
+### 🎯 **Dashboard & Analytics**
+- Personal captain dashboard with recent battles
+- Detailed game history viewing system
+- Performance analytics and achievement tracking
+- Quick access to profile management tools
 
-* Tells player if they input invalid values or the same values more than once.
+### 🎨 **Modern Naval-Themed Interface**
+- Immersive pirate/naval aesthetic with authentic color schemes
+- Responsive grid-based layouts for all devices
+- Interactive hover effects and smooth animations
+- Hero images featuring pirate ships and naval warfare
+- Professional game instructions and feature descriptions
 
-* Tells player how many turns or 'cannon balls' they have left.
+## **[Technology Stack](#technology-stack)**
 
-  ![input validation](assets/images/README.md-input-validation.png)
+### **Backend**
+- **Django 4.2.9**: Web framework with MVC architecture
+- **Python 3.11**: Core programming language
+- **Gunicorn**: WSGI HTTP Server for production
+- **WhiteNoise**: Static file serving middleware
 
-### Featuers left to implement
+### **Database & Models**
+- **SQLite**: Development database
+- **PostgreSQL**: Production database (Heroku)
+- **Custom Models**: PirateQueen, UserProfile, Game tracking
 
- * HTML and CSS is required to enhance UX
- * An option for the User to decide on the size of the game board and how many ships
+### **Frontend**
+- **HTML5**: Semantic markup structure
+- **CSS3**: Naval-themed styling and responsive design
+- **JavaScript**: Interactive gameplay and AJAX functionality
+- **Bootstrap**: Responsive grid system and components
 
-## **[Data Model](#data-model)**
+### **Deployment & DevOps**
+- **Heroku**: Cloud platform deployment
+- **Git**: Version control system
+- **GitHub**: Repository hosting and collaboration
+- **Environment Variables**: Secure configuration management
 
--	Functions are used on throughout the code to avoid repetitive code as much as possible.
+## **[Game Mechanics](#game-mechanics)**
 
--	Methods are used throughout the game to print and/or return instructions and responses to the player’s input of name and the coordinates for the player to advance in the game and win or lose. 
+### **Ship Placement Algorithm**
+- Randomized ship positioning using Python's `randint()` method
+- Collision detection prevents ship overlap
+- Strategic placement ensures balanced gameplay difficulty
 
--	The randint()Method was imported to generate the ships at various locations on the game board.  
+### **Battle System**
+- Click-based coordinate targeting system
+- Real-time hit/miss validation and feedback
+- Ammunition tracking with difficulty-based limits
+- Victory/defeat condition checking
 
--	The special built-in Python variable __name__ is used to execute the main module directly.  
+### **Scoring System**
+- Battle completion tracking with timestamps
+- Shot accuracy calculations and statistics
+- Win rate percentages and performance metrics
+- Historical battle data persistence
 
+## **[User System](#user-system)**
 
-## **[Testing](#testing)**
+### **Authentication Flow**
+- Django's built-in authentication system
+- Automatic profile creation upon registration
+- Session-based login state management
+- Secure password handling and validation
 
+### **Profile Management**
+- Pirate captain customization interface
+- Avatar selection from historical figures
+- Biographical information and preferences
+- Game difficulty and display settings
 
-PEP8 Online was used to validate the Python code to ensure there were no errors present, such as issues with indentation or whitespaces. 
+## **[Deployment](#deployment)**
 
+### **Live Production Environment**
+The game is deployed on Heroku with the following configuration:
 
-![PEP8 validation](assets/images/README.md-pep8-validation.png)
+**Primary Deployment**: https://better-ships-battle-better.herokuapp.com/
+**Secondary Deployment**: https://pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com/
 
-## **[Bugs](#bugs)**
+### **Deployment Process**
+1. **Heroku Setup**: Create new Heroku application
+2. **Environment Configuration**: Set production environment variables
+3. **Database Migration**: Configure PostgreSQL database
+4. **Static Files**: WhiteNoise middleware for static file serving
+5. **Process Configuration**: Gunicorn WSGI server setup
 
-Two bugs were encountered in developing this project:
+### **Key Configuration Files**
+- `Procfile`: Heroku process configuration
+- `requirements.txt`: Python dependencies
+- `settings.py`: Django production settings
+- `.python-version`: Python version specification
 
--	The computer’s board with the random location of the ships was being printed for the player to see. This defeats the object of the game and had to be fixed. 
+## **[Installation](#installation)**
 
-![secret board printed](assets/images/README.md-secret-board.png)
+### **Local Development Setup**
 
-This was happening for testing purposes to make sure that the player could win and/or lose. This bug was fixed by removing Line 124.
+1. **Clone Repository**
+   ```bash
+   git clone https://github.com/SamOBrienOlinger/Better-Ships-that-Battle-Better.git
+   cd Better-Ships-that-Battle-Better
+   ```
 
-![remove secret board](assets/images/README.md-remove-secret-board.png)
+2. **Create Virtual Environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
+3. **Install Dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
--	Another initial bug was that the board was not printing out correctly.
+4. **Database Setup**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
 
-![incorrect board layout](assets/images/README.md-wrong-board-layout.png)
+5. **Create Superuser** (Optional)
+   ```bash
+   python manage.py createsuperuser
+   ```
 
+6. **Run Development Server**
+   ```bash
+   python manage.py runserver 8080
+   ```
 
-The simple fix for the board bug was proper indentation on Line 62 (board[ship_row][ship_column] = 'X').
+7. **Access Game**: Navigate to `http://localhost:8080`
 
-‘Bugged’ code: 
+### **Environment Variables**
+Create a `.env` file in the project root:
+```
+DEBUG=True
+SECRET_KEY=your-secret-key-here
+DATABASE_URL=sqlite:///db.sqlite3
+```
 
-~~~
-def random_ship_location(board):
-    '''
-    Places 5 ships at random on given board
-    '''
-    for ship in range(5):
-        ship_row, ship_column = randint(0, 7), randint(0, 7)
-        while board[ship_row][ship_column] == 'X':
-            ship_row, ship_column = randint(0, 7), randint(0, 7)
-    board[ship_row][ship_column] = 'X'
+## **[Credits](#credits)**
 
-~~~
+### **Development Resources**
+- **[Code Institute LMS](https://learn.codeinstitute.net/)**: Portfolio project guidance and Django tutorials
+- **[Django Documentation](https://docs.djangoproject.com/)**: Framework reference and best practices
+- **[W3Schools](https://www.w3schools.com/)**: HTML, CSS, and JavaScript tutorials
+- **[Stack Overflow](https://stackoverflow.com/)**: Community support and problem-solving
+- **[MDN Web Docs](https://developer.mozilla.org/)**: Web development standards and references
+- **[Geeks for Geeks](https://www.geeksforgeeks.org/)**: Python programming tutorials
 
-debugged code:
+### **Original Battleship Logic**
+Core game board logic adapted from [Garrett Broughton's Battleship](https://github.com/gbrough/battleship):
 
-~~~
-def initialize_board(board, max_ships):
-    """
-    Places `max_ships` ships at random on given board.
-    """
-    for _ in range(max_ships):
-        ship_row, ship_column = randint(0, 7), randint(0, 7)
-        while board[ship_row][ship_column] == "X":
-            ship_row, ship_column = randint(0, 7), randint(0, 7)
-
-        board[ship_row][ship_column] = "X"
-~~~
-
-##	**[Deployment](#deployment)**
-
-**Heroku**
-
-The project was deployed using Code Institute's mock terminal for Heroku.
-
-Steps for deployment:
-
-1.	Fork or clone this repository.
-2.	Create a new Heroku app.
-3.	Set the buildbacks to python and NodeJS in that order.
-4.	Link the Heroku app to the repository.
-5.	Click on Deploy.
-
-
-
-##	**[Credits](#credits)**
-
-The following online resources were used for a range of supports such as getting correct syntax and learning more about functions and generating random coordinates for the ships:
-
-•	Code Institute LMS, in particular the [Portfolio Project Scope]( https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+PE_PAGPPF+2021_Q2/courseware/b3378fc1159e43e3b70916fdefdfae51/605f34e006594dc4ae19f5e60ec75e2e/)
-
-•	[W3Schools]( https://www.w3schools.com/)
-
-•	[Stack Overflow](https://stackoverflow.com/)
-
-•	[MDN Web Docs](https://developer.mozilla.org/en-US/)
-
-•	[Geeks for Geeks](https://www.geeksforgeeks.org/)
-
-
-Code used to develop the game board was based on battleship code developed by [Garrett Broughton]( https://github.com/gbrough/battleship): 
-
-~~~
-  def get_letters_to_numbers():
+```python
+def get_letters_to_numbers():
     letters_to_numbers = {"A": 0, "B": 1, "C": 2, "D": 3, "E": 4, "F": 5, "G": 6, "H": 7}
     return letters_to_numbers
 
-  def print_board(self):
-      print("  1 2 3 4 5 6 7 8")
-      print("  A B C D E F G H")
-      print("  +-+-+-+-+-+-+-+")
-      row_number = 1
-      for row in self.board:
-          print("%d|%s|" % (row_number, "|".join(row)))
-          row_number += 1
+def print_board(self):
+    print("  1 2 3 4 5 6 7 8")
+    print("  A B C D E F G H")
+    print("  +-+-+-+-+-+-+-+")
+    row_number = 1
+    for row in self.board:
+        print("%d|%s|" % (row_number, "|".join(row)))
+        row_number += 1
+```
 
-~~~
+### **Historical References**
+- Pirate Queen avatars based on historical female pirates
+- Naval terminology and theming from maritime history
+- Ship classifications from real naval vessel types
 
-##	**[Acknowledgements](#acknowledgements)** 
+## **[Acknowledgements](#acknowledgements)**
 
-- A number of YouTube explainer videos were really helpful:
+### **Educational Support**
+- **YouTube Tutorials**: Various Python game development and Django deployment guides
+- **[Sandeep Aggarwal](https://code-institute-room.slack.com/archives/D02TFLJRZTR)**: Mentor guidance and project feedback
+- **Code Institute Community**: Tutors and students providing support via Slack
 
-  - [5 - Python Indentation]( https://www.youtube.com/watch?v=Cd-k6QQMa18)
-  - [How to Make A Simple Game in Python (For Beginners)]( https://www.youtube.com/watch?v=BDi3SD7E6no)
-  - [How to code battle ship game board in python]( https://www.youtube.com/watch?v=cwpS_ac8uk0)
-  - [Learn Python with CodeCademy: Battleship!]( https://www.youtube.com/watch?v=7Ki_2gr0rsE&list=PL8yQOxsW917EWx8Vxcoko3_swX-lmg2G1&index=1)
-  - [How to Code Battleship in Python - Single Player Game]( https://www.youtube.com/watch?v=tF1WRCrd_HQ&list=PL8yQOxsW917EWx8Vxcoko3_swX-lmg2G1&index=1)
-  - [Deploy your first App with Heroku and Node.js]( https://www.youtube.com/watch?v=MxfxiR8TVNU)
+### **Technical Contributors**
+- **[jo_ci](https://github.com/wings30306)**: Django authentication guidance
+- **[AlexaHendry_5P](https://code-institute-room.slack.com/team/U02FQKWTXGT)**: Frontend design feedback
+- **[oisin_ci](https://code-institute-room.slack.com/archives/D03NCBKR8BB)**: Deployment troubleshooting
+- **[gemma_ci](https://code-institute-room.slack.com/archives/D03MT4GMGG6)**: Database modeling assistance
+- **[alexandru_ci](https://code-institute-room.slack.com/archives/D03MK4WD9NK)**: Heroku deployment support
 
+### **Special Recognition**
+- **Windsurf AI**: Advanced development assistance and code optimization
+- **Heroku Platform**: Reliable cloud deployment infrastructure
+- **Django Community**: Excellent framework documentation and community support
 
+---
 
-   - My mentor, [Sandeep Aggarwal](https://code-institute-room.slack.com/archives/D02TFLJRZTR), was a great support and he provided key feedback which helped deliver this project.  
-   
-   - A number of Code Institute Tutors and students were very supportive via slack and the Student Support Live Chat. The following tutors and students helped guide me and to tease out a range of issues I faced developing the project: 
-     
-      - [jo_ci]( https://github.com/wings30306)
-      - [AlexaHendry_5P]( https://code-institute-room.slack.com/team/U02FQKWTXGT)
-      - [oisin_ci]( https://code-institute-room.slack.com/archives/D03NCBKR8BB)
-      - [gemma_ci]( https://code-institute-room.slack.com/archives/D03MT4GMGG6)
-      - [alexandru_ci]( https://code-institute-room.slack.com/archives/D03MK4WD9NK)
-
-**[Click Here](#contents)** to return to Contents
-
- -->
+**[⬆️ Back to Top](#better-ships-that-battle-better)** | **[🎮 Play Now](https://better-ships-battle-better.herokuapp.com/)** | **[📁 View Code](https://github.com/SamOBrienOlinger/Better-Ships-that-Battle-Better)**
