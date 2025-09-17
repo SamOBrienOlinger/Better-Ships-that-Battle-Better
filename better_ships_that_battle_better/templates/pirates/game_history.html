@@ -3,11 +3,11 @@
 {% block title %}Game History - Better Ships that Battle Better{% endblock %}
 
 {% block content %}
-<div style="max-width: 1000px; margin: 0 auto;">
-    <h2 style="text-align: center; margin-bottom: 30px;">📜 Battle History</h2>
+<div class="container-wide">
+    <h2 class="text-center mb-30">📜 Battle History</h2>
     
     <!-- Summary Stats -->
-    <div class="stats-grid" style="margin-bottom: 30px;">
+    <div class="stats-grid mb-30">
         <div class="stat-card">
             <div class="stat-number">{{ stats.total_games }}</div>
             <div>Total Battles</div>
@@ -27,47 +27,47 @@
     </div>
     
     <!-- Games List -->
-    <div style="border: 1px solid #0048ff45; padding: 20px; background-color: #002200;">
+    <div class="panel-alt">
         {% if games %}
-            <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse;">
+            <div class="overflow-x-auto">
+                <table class="table">
                     <thead>
-                        <tr style="border-bottom: 2px solid #0048ff45;">
-                            <th style="padding: 15px; text-align: left;">Date & Time</th>
-                            <th style="padding: 15px; text-align: left;">Result</th>
-                            <th style="padding: 15px; text-align: left;">Difficulty</th>
-                            <th style="padding: 15px; text-align: left;">Shots Fired</th>
-                            <th style="padding: 15px; text-align: left;">Ships Sunk</th>
-                            <th style="padding: 15px; text-align: left;">Duration</th>
-                            <th style="padding: 15px; text-align: left;">Efficiency</th>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Result</th>
+                            <th>Difficulty</th>
+                            <th>Shots Fired</th>
+                            <th>Ships Sunk</th>
+                            <th>Duration</th>
+                            <th>Efficiency</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for game in games %}
-                            <tr style="border-bottom: 1px solid #004400;">
-                                <td style="padding: 15px;">
+                            <tr>
+                                <td>
                                     <div>{{ game.played_at|date:"M d, Y" }}</div>
-                                    <div style="font-size: 12px; color: #888888;">{{ game.played_at|date:"H:i:s" }}</div>
+                                    <div class="small muted">{{ game.played_at|date:"H:i:s" }}</div>
                                 </td>
-                                <td style="padding: 15px;">
+                                <td>
                                     {% if game.result == 'win' %}
-                                        <span style="color: #0048ff45; font-weight: bold;">🏆 VICTORY</span>
+                                        <span class="text-accent"><strong>🏆 VICTORY</strong></span>
                                     {% else %}
-                                        <span style="color: #ff6666; font-weight: bold;">💀 DEFEAT</span>
+                                        <span class="text-danger"><strong>💀 DEFEAT</strong></span>
                                     {% endif %}
                                 </td>
-                                <td style="padding: 15px;">
-                                    <span style="color: {% if game.difficulty == 'hard' %}#ff6666{% elif game.difficulty == 'normal' %}#ffff00{% else %}#0048ff45{% endif %};">
+                                <td>
+                                    <span class="{% if game.difficulty == 'hard' %}text-danger{% elif game.difficulty == 'normal' %}text-warning{% else %}text-accent{% endif %}">
                                         {{ game.get_difficulty_display }}
                                     </span>
                                 </td>
-                                <td style="padding: 15px;">{{ game.shots_fired }}</td>
-                                <td style="padding: 15px;">
-                                    <span style="{% if game.ships_sunk == 5 %}color: #0048ff45; font-weight: bold;{% endif %}">
+                                <td>{{ game.shots_fired }}</td>
+                                <td>
+                                    <span class="{% if game.ships_sunk == 5 %}text-accent{% endif %}"><strong>
                                         {{ game.ships_sunk }}/5
-                                    </span>
+                                    </strong></span>
                                 </td>
-                                <td style="padding: 15px;">
+                                <td>
                                     {% if game.duration_seconds %}
                                         {% if game.duration_seconds < 60 %}
                                             {{ game.duration_seconds }}s
@@ -77,16 +77,16 @@
                                             {{ game.duration_seconds|floatformat:0|add:0|div:3600|floatformat:0 }}h {{ game.duration_seconds|add:0|mod:3600|div:60|floatformat:0 }}m
                                         {% endif %}
                                     {% else %}
-                                        <span style="color: #888888;">-</span>
+                                        <span class="muted">-</span>
                                     {% endif %}
                                 </td>
-                                <td style="padding: 15px;">
+                                <td>
                                     {% if game.ships_sunk > 0 %}
-                                        <span style="color: {% if game.shots_fired|div:game.ships_sunk <= 2 %}#0048ff45{% elif game.shots_fired|div:game.ships_sunk <= 4 %}#ffff00{% else %}#ff6666{% endif %};">
+                                        <span class="{% if game.shots_fired|div:game.ships_sunk <= 2 %}text-accent{% elif game.shots_fired|div:game.ships_sunk <= 4 %}text-warning{% else %}text-danger{% endif %}">
                                             {{ game.shots_fired|div:game.ships_sunk|floatformat:1 }} shots/ship
                                         </span>
                                     {% else %}
-                                        <span style="color: #888888;">-</span>
+                                        <span class="muted">-</span>
                                     {% endif %}
                                 </td>
                             </tr>
@@ -97,40 +97,40 @@
             
             <!-- Pagination -->
             {% if is_paginated %}
-                <div style="text-align: center; margin-top: 30px;">
-                    <div style="display: inline-block;">
+                <div class="text-center mt-30">
+                    <div>
                         {% if page_obj.has_previous %}
-                            <a href="?page=1" class="btn" style="margin: 0 5px;">First</a>
-                            <a href="?page={{ page_obj.previous_page_number }}" class="btn" style="margin: 0 5px;">Previous</a>
+                            <a href="?page=1" class="btn mx-10">First</a>
+                            <a href="?page={{ page_obj.previous_page_number }}" class="btn mx-10">Previous</a>
                         {% endif %}
                         
-                        <span style="margin: 0 15px; color: #0048ff45;">
+                        <span class="mx-10 text-accent">
                             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                         </span>
                         
                         {% if page_obj.has_next %}
-                            <a href="?page={{ page_obj.next_page_number }}" class="btn" style="margin: 0 5px;">Next</a>
-                            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn" style="margin: 0 5px;">Last</a>
+                            <a href="?page={{ page_obj.next_page_number }}" class="btn mx-10">Next</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}" class="btn mx-10">Last</a>
                         {% endif %}
                     </div>
                 </div>
             {% endif %}
             
         {% else %}
-            <div style="text-align: center; color: #888888; padding: 40px;">
+            <div class="text-center muted p-40">
                 <h3>No battles recorded yet, Captain!</h3>
                 <p>Your naval adventures await...</p>
-                <div style="margin-top: 30px;">
-                    <a href="{% url 'game' %}" class="btn" style="font-size: 18px; padding: 15px 30px;">⚓ Start Your First Battle</a>
+                <div class="mt-30">
+                    <a href="{% url 'game' %}" class="btn btn-lg">⚓ Start Your First Battle</a>
                 </div>
             </div>
         {% endif %}
     </div>
     
     <!-- Action Buttons -->
-    <div style="text-align: center; margin-top: 30px;">
-        <a href="{% url 'dashboard' %}" class="btn" style="margin: 0 10px;">📊 Back to Dashboard</a>
-        <a href="{% url 'game' %}" class="btn" style="margin: 0 10px;">⚓ New Battle</a>
+    <div class="text-center mt-30">
+        <a href="{% url 'dashboard' %}" class="btn mx-10">📊 Back to Dashboard</a>
+        <a href="{% url 'game' %}" class="btn mx-10">⚓ New Battle</a>
     </div>
 </div>
 {% endblock %}

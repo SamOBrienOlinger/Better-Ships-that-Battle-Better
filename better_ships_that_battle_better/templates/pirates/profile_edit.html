@@ -3,8 +3,8 @@
 {% block title %}Edit Profile - Better Ships that Battle Better{% endblock %}
 
 {% block content %}
-<div style="max-width: 800px; margin: 0 auto;">
-    <h2 style="text-align: center; margin-bottom: 30px;">🏴‍☠️ Edit Your Pirate Profile</h2>
+<div class="narrow">
+    <h2 class="text-center mb-30">🏴‍☠️ Edit Your Pirate Profile</h2>
     
     <form method="post" id="profile-form">
         {% csrf_token %}
@@ -13,13 +13,13 @@
             <label for="{{ form.pirate_name.id_for_label }}">Pirate Name:</label>
             {{ form.pirate_name }}
             {% if form.pirate_name.errors %}
-                <div style="color: #ff6666; margin-top: 5px;">
+                <div class="text-danger mt-15 small">
                     {% for error in form.pirate_name.errors %}
                         <div>{{ error }}</div>
                     {% endfor %}
                 </div>
             {% endif %}
-            <div style="color: #888888; font-size: 12px; margin-top: 5px;">Your legendary pirate captain name</div>
+            <div class="muted small mt-15">Your legendary pirate captain name</div>
         </div>
         
         <div class="form-group">
@@ -29,15 +29,15 @@
                     <div class="pirate-queen-option {% if queen.id == form.chosen_pirate_queen.value %}selected{% endif %}" data-queen-id="{{ queen.id }}">
                         <img src="{{ queen.image_url }}" alt="{{ queen.name }}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSIjMDAyMjAwIi8+Cjx0ZXh0IHg9IjUwIiB5PSI1NSIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3IiBmb250LXNpemU9IjEyIiBmaWxsPSIjMDBmZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXJhdGU8L3RleHQ+CjwvZXZnPg=='">
                         <h4>{{ queen.name }}</h4>
-                        <p style="font-size: 12px; color: #888888;">{{ queen.historical_period }}</p>
-                        <p style="font-size: 11px;">{{ queen.region }}</p>
-                        <p style="font-size: 10px; margin-top: 10px;">{{ queen.description|truncatewords:15 }}</p>
+                        <p class="small muted">{{ queen.historical_period }}</p>
+                        <p class="small">{{ queen.region }}</p>
+                        <p class="small mt-15">{{ queen.description|truncatewords:15 }}</p>
                     </div>
                 {% endfor %}
             </div>
             {{ form.chosen_pirate_queen }}
             {% if form.chosen_pirate_queen.errors %}
-                <div style="color: #ff6666; margin-top: 5px;">
+                <div class="text-danger mt-15 small">
                     {% for error in form.chosen_pirate_queen.errors %}
                         <div>{{ error }}</div>
                     {% endfor %}
@@ -49,31 +49,31 @@
             <label for="{{ form.bio.id_for_label }}">Bio:</label>
             {{ form.bio }}
             {% if form.bio.errors %}
-                <div style="color: #ff6666; margin-top: 5px;">
+                <div class="text-danger mt-15 small">
                     {% for error in form.bio.errors %}
                         <div>{{ error }}</div>
                     {% endfor %}
                 </div>
             {% endif %}
-            <div style="color: #888888; font-size: 12px; margin-top: 5px;">Tell your tale of the high seas (optional)</div>
+            <div class="muted small mt-15">Tell your tale of the high seas (optional)</div>
         </div>
         
         <div class="form-group">
             <label for="{{ form.preferred_difficulty.id_for_label }}">Preferred Difficulty:</label>
             {{ form.preferred_difficulty }}
             {% if form.preferred_difficulty.errors %}
-                <div style="color: #ff6666; margin-top: 5px;">
+                <div class="text-danger mt-15 small">
                     {% for error in form.preferred_difficulty.errors %}
                         <div>{{ error }}</div>
                     {% endfor %}
                 </div>
             {% endif %}
-            <div style="color: #888888; font-size: 12px; margin-top: 5px;">Choose your battle difficulty preference</div>
+            <div class="muted small mt-15">Choose your battle difficulty preference</div>
         </div>
         
-        <div style="text-align: center; margin-top: 30px;">
+        <div class="text-center mt-30">
             <button type="submit" class="btn">⚓ Update Profile</button>
-            <a href="{% url 'dashboard' %}" class="btn" style="margin-left: 10px;">Cancel</a>
+            <a href="{% url 'dashboard' %}" class="btn ml-10">Cancel</a>
         </div>
     </form>
 </div>

@@ -1,7 +1,9 @@
+"""Forms for Pirate profiles (create/edit)."""
 from django import forms
 from .models import UserProfile, PirateQueen
 
 class UserProfileForm(forms.ModelForm):
+    """ModelForm to create or edit a user's pirate profile."""
     class Meta:
         model = UserProfile
         fields = ['pirate_name', 'chosen_pirate_queen', 'bio', 'preferred_difficulty']
@@ -25,5 +27,6 @@ class UserProfileForm(forms.ModelForm):
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['chosen_pirate_queen'].queryset = PirateQueen.objects.all()
+        # Use the model's default manager to satisfy static analyzers
+        self.fields['chosen_pirate_queen'].queryset = PirateQueen._meta.default_manager.all()
         self.fields['chosen_pirate_queen'].empty_label = "Choose your Pirate Queen..."
