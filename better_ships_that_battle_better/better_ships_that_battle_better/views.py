@@ -1,4 +1,8 @@
-"""Core views for Better Ships That Battle Better project."""
+"""Core views for Better Ships That Battle Better project.
+
+This module contains views for user authentication, profile management, and game-related functionality.
+"""
+
 import json
 
 from django.contrib import messages
@@ -185,7 +189,7 @@ def save_game_result(request):
             )
 
             return JsonResponse({'success': True})
-        except (json.JSONDecodeError, UserProfile.DoesNotExist, TypeError, ValueError) as e:
+        except (json.JSONDecodeError, UserProfile.DoesNotExist, ValueError) as e:
             return JsonResponse({'success': False, 'error': str(e)})
     return JsonResponse({'success': False, 'error': 'Invalid request method'})
 

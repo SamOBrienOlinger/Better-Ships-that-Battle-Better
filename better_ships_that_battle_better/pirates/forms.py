@@ -1,9 +1,11 @@
-"""Forms for Pirate profiles (create/edit)."""
+"""Forms for the Pirates app: profile create/edit."""
 from django import forms
 from .models import UserProfile, PirateQueen
 
+
 class UserProfileForm(forms.ModelForm):
-    """ModelForm to create or edit a user's pirate profile."""
+    """Form to create and edit a user's pirate profile."""
+
     class Meta:
         model = UserProfile
         fields = ['pirate_name', 'chosen_pirate_queen', 'bio', 'preferred_difficulty']
@@ -24,9 +26,9 @@ class UserProfileForm(forms.ModelForm):
                 'class': 'form-control'
             })
         }
-        
+
     def __init__(self, *args, **kwargs):
+        """Initialize form and set pirate queen choices."""
         super().__init__(*args, **kwargs)
-        # Use the model's default manager to satisfy static analyzers
-        self.fields['chosen_pirate_queen'].queryset = PirateQueen._meta.default_manager.all()
+        self.fields['chosen_pirate_queen'].queryset = PirateQueen.objects.all()
         self.fields['chosen_pirate_queen'].empty_label = "Choose your Pirate Queen..."
