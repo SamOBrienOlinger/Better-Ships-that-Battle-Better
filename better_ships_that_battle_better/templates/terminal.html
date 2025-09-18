@@ -3,9 +3,9 @@
 {% block title %}Terminal - Better Ships that Battle Better{% endblock %}
 
 {% block content %}
-<div style="max-width: 800px; margin: 0 auto;">
-    <div style="background-color: #111; border: 2px solid #00ff00; border-radius: 5px; padding: 20px; min-height: 500px;">
-        <div style="white-space: pre-wrap; margin-bottom: 20px;">
+<div class="container-wide">
+    <div class="terminal-panel">
+        <div class="terminal-text">
 ⚓ BETTER SHIPS THAT BATTLE BETTER - COMMAND LINE VERSION ⚓
 
 The command line version requires running the Python script directly.
@@ -29,9 +29,9 @@ Good luck, Captain! ⚓
         </div>
     </div>
     
-    <div style="text-align: center; margin-top: 20px;">
+    <div class="text-center mt-20">
         <a href="{% url 'game' %}" class="btn">⚓ Play Web Version</a>
-        <a href="{% url 'home' %}" class="btn" style="margin-left: 10px;">🏠 Home</a>
+        <a href="{% url 'home' %}" class="btn ml-10">🏠 Home</a>
     </div>
 </div>
 {% endblock %}

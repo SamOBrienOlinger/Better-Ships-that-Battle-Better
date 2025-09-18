@@ -7,6 +7,7 @@ class UserProfileForm(forms.ModelForm):
     """Form to create and edit a user's pirate profile."""
 
     class Meta:
+        """Meta class for UserProfileForm."""
         model = UserProfile
         fields = ['pirate_name', 'chosen_pirate_queen', 'bio', 'preferred_difficulty']
         widgets = {

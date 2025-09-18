@@ -1,6 +1,7 @@
 """Core views for Better Ships That Battle Better project.
 
-This module contains views for user authentication, profile management, and game-related functionality.
+This module contains views for user authentication, profile management and 
+game-related functionality.
 """
 
 import json
