@@ -15,5 +15,5 @@ DATABASE_URL = 'postgres://u4o4iphdt49fhi:p8d8f824787ab0bddad5e113e19bb564227ceb
 CLOUDYNARY_URL = 'PASTE_YOUR_FULL_CLOUDINARY_URL_HERE'
 
 # OTHER VARIABLES: Use the final, correct host
-ALLOWED_HOST = 'pirate-queens-sea-battles.herokuapp.com'
+ALLOWED_HOST = 'pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com'
 DISABLE_COLLECTSTATIC = '1'

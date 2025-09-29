@@ -32,7 +32,7 @@ DEBUG = DEV
 # CRITICAL FIX 1: Set allowed hosts explicitly and securely
 # This ensures only your Heroku app and localhost can access the app.
 ALLOWED_HOSTS = [
-    'pirate-queens-sea-battles.herokuapp.com', # Heroku app domain from Config Vars
+    'pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com', # Heroku app domain from Config Vars
     'localhost', 
     '127.0.0.1', 
 ]
