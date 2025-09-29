@@ -24,9 +24,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-b=)-++@83xa53^vpsg#t*6tobszcmkspv98@(=&=8xmdzd6_s6')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+# Check for a 'DEV' environment variable first, then 'DEBUG'.
+# Your local .env is likely setting DEBUG = True, which is why a production override is needed.
+DEV = os.environ.get('DEV', 'True').lower() == 'true'
+DEBUG = DEV
 
-ALLOWED_HOSTS = ['*']
+# CRITICAL FIX 1: Set allowed hosts explicitly and securely
+# This ensures only your Heroku app and localhost can access the app.
+ALLOWED_HOSTS = [
+    'pirate-queens-sea-battles.herokuapp.com', # Heroku app domain from Config Vars
+    'localhost', 
+    '127.0.0.1', 
+]
+
+# CRITICAL FIX 2: SSL Header for Heroku
+# This tells Django to trust the secure connection (HTTPS) coming from Heroku's proxy,
+# preventing redirect loops and ensuring security features work.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Application definition
 
@@ -96,7 +111,7 @@ except ImportError:
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en-4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -115,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
+# https://docs.djangoproject.com/en-4.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -127,7 +142,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
+# https://docs.djangoproject.com/en-4.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -139,6 +154,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+# https://docs.djangoproject.com/en-4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
