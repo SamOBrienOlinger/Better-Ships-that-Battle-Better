@@ -1,1 +1,2 @@
-web: gunicorn better_ships_that_battle_better.better_ships_that_battle_better.wsgi:application --bind 0.0.0.0:$PORT
+release: cd better_ships_that_battle_better && python manage.py migrate
+web: cd better_ships_that_battle_better && gunicorn better_ships_that_battle_better.wsgi:application --bind 0.0.0.0:$PORT
