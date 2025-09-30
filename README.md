@@ -40,9 +40,9 @@ This interactive web-based battleship game transforms the classic naval warfare 
 1. **Create Your Profile**: Choose your pirate captain name and write your naval biography
 2. **Select Your Avatar**: Pick from historical Pirate Queen avatars
 3. **Set Difficulty**: Choose your challenge level:
-   - **Easy**: 20 cannonballs
-   - **Normal**: 15 cannonballs  
-   - **Hard**: 10 cannonballs
+   - **Easy**: 25 cannonballs
+   - **Normal**: 20 cannonballs  
+   - **Hard**: 15 cannonballs
 
 ### Naval Combat
 

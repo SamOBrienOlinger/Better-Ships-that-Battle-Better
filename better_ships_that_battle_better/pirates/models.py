@@ -30,9 +30,9 @@ class UserProfile(models.Model):
     preferred_difficulty = models.CharField(
         max_length=20,
         choices=[
-            ('easy', 'Easy (15 shots)'),
-            ('normal', 'Normal (10 shots)'),
-            ('hard', 'Hard (7 shots)'),
+            ('easy', 'Easy (25 shots)'),
+            ('normal', 'Normal (20 shots)'),
+            ('hard', 'Hard (15 shots)'),
         ],
         default='normal'
     )

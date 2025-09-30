@@ -235,14 +235,14 @@ def game(request):
     Main game interface for both authenticated and guest users
     """
     profile = None
-    shots_available = 15  # Default for guests
+    shots_available = 20  # Default for guests
 
     if request.user.is_authenticated:
         try:
             profile = UserProfile.objects.get(user=request.user)
             # Get shots based on difficulty
-            shots_map = {'easy': 20, 'normal': 15, 'hard': 10}
-            shots_available = shots_map.get(profile.preferred_difficulty, 15)
+            shots_map = {'easy': 25, 'normal': 20, 'hard': 15}
+            shots_available = shots_map.get(profile.preferred_difficulty, 20)
         except UserProfile.DoesNotExist:
             pass
 
