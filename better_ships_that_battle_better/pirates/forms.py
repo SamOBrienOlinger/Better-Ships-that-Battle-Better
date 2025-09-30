@@ -31,6 +31,6 @@ class UserProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         """Initialize form and set pirate queen choices."""
         super().__init__(*args, **kwargs)
-        # Django automatically provides objects manager for all models
+        # Django automatically provides objects manager for all models at runtime
         self.fields['chosen_pirate_queen'].queryset = PirateQueen.objects.all()  # type: ignore[attr-defined]
-        self.fields['chosen_pirate_queen'].empty_label = "Choose your Pirate Queen..."
+        self.fields['chosen_pirate_queen'].empty_label = "Choose your Pirate Queen..."  # type: ignore[attr-defined]

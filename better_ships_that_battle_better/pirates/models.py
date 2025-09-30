@@ -47,12 +47,12 @@ class UserProfile(models.Model):
     )
     
     def __str__(self) -> str:
-        # Django provides access to related model fields
+        # Django provides access to related model fields at runtime
         return f"Captain {self.pirate_name} ({self.user.username})"  # type: ignore[attr-defined]
     
     @property
     def total_games(self) -> int:
-        # Django automatically creates reverse relationship managers
+        # Django automatically creates reverse relationship managers at runtime
         return self.game_set.count()  # type: ignore[attr-defined]
     
     @property
@@ -86,7 +86,7 @@ class Game(models.Model):
     played_at = models.DateTimeField(default=timezone.now)
     
     def __str__(self) -> str:
-        # Django provides get_*_display methods for choice fields and related field access
+        # Django provides get_*_display methods for choice fields and related field access at runtime
         return f"{self.player.pirate_name} - {self.get_result_display()} ({self.played_at.strftime('%Y-%m-%d')})"  # type: ignore[attr-defined]
     
     class Meta:

@@ -1,12 +1,31 @@
 {
-   "python.linting.pylintEnabled": true,
-   "python.linting.enabled": true,
+   "python.linting.pylintEnabled": false,
+   "python.linting.enabled": false,
    "python.linting.pycodestyleEnabled": false,
-   "python.linting.flake8Enabled": true,
+   "python.linting.flake8Enabled": false,
    "python.terminal.activateEnvironment": false,
    "python.formatting.autopep8Path": "/home/gitpod/.pyenv/shims/autopep8",
    "python.linting.flake8Path": "/home/gitpod/.pyenv/shims/flake8",
    "cornflakes.linter.executablePath": "/home/gitpod/.pyenv/shims/flake8",
+   "python.analysis.extraPaths": [
+      "./better_ships_that_battle_better"
+   ],
+   "python.analysis.autoSearchPaths": true,
+   "python.analysis.diagnosticMode": "workspace",
+   "python.analysis.typeCheckingMode": "basic",
+   "python.analysis.autoImportCompletions": true,
+   "python.analysis.diagnosticSeverityOverrides": {
+      "reportMissingImports": "none",
+      "reportMissingTypeStubs": "none",
+      "reportGeneralTypeIssues": "none",
+      "reportOptionalMemberAccess": "none",
+      "reportOptionalCall": "none",
+      "reportOptionalIterable": "none",
+      "reportOptionalContextManager": "none",
+      "reportOptionalOperand": "none",
+      "reportUnboundVariable": "none",
+      "reportUndefinedVariable": "none"
+   },
    "files.exclude": {
       "**/.DS_Store": true,
       "**/.git": true,
@@ -14,7 +33,6 @@
       "**/.gitp*": true,
       "**/.hg": true,
       "**/.svn": true,
-      "**/.vscode": true,
       "**/core.Microsoft*": true,
       "**/core.mongo*": true,
       "**/core.python*": true,
@@ -22,5 +40,5 @@
    },
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
-   "editor.defaultFormatter": "HookyQR.beautify"
+   "editor.defaultFormatter": "ms-python.python"
 }

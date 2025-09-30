@@ -17,11 +17,11 @@ class UserProfileAdmin(admin.ModelAdmin):
     
     def total_games(self, obj):
         return obj.total_games
-    total_games.short_description = 'Total Games'
+    total_games.short_description = 'Total Games'  # type: ignore[attr-defined]
     
     def win_percentage(self, obj):
         return f"{obj.win_percentage}%"
-    win_percentage.short_description = 'Win Rate'
+    win_percentage.short_description = 'Win Rate'  # type: ignore[attr-defined]
 
 @admin.register(Game)
 class GameAdmin(admin.ModelAdmin):

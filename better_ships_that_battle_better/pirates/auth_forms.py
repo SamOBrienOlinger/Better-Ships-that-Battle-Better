@@ -1,10 +1,8 @@
 """Custom authentication forms for the Pirates app."""
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.contrib.auth import authenticate
-import re
 
 
 class CustomUserCreationForm(forms.Form):
@@ -80,8 +78,10 @@ class CustomUserCreationForm(forms.Form):
             raise ValidationError("The two password fields didn't match.")
         return password2
 
-    def save(self, commit=True):
+    def save(self, commit=True):  # pylint: disable=unused-argument
         """Save the user with the custom username validation."""
+        # Note: commit parameter kept for compatibility but not used 
+        # since we're using create_user which commits immediately
         user = User.objects.create_user(
             username=self.cleaned_data["username"],
             email=self.cleaned_data.get("email", ""),

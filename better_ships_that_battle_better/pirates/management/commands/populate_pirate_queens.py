@@ -1,6 +1,5 @@
 """Django management command to populate the database with historical Pirate Queens."""
 from django.core.management.base import BaseCommand
-from django.core.management.color import Style
 from pirates.models import PirateQueen
 
 
@@ -133,13 +132,13 @@ class Command(BaseCommand):
             if created:
                 created_count += 1
                 self.stdout.write(
-                    Style.SUCCESS(f'Created Pirate Queen: {queen.name}')
+                    self.style.SUCCESS(f'Created Pirate Queen: {queen.name}')
                 )
             else:
                 self.stdout.write(
-                    Style.WARNING(f'Pirate Queen already exists: {queen.name}')
+                    self.style.WARNING(f'Pirate Queen already exists: {queen.name}')
                 )
 
         self.stdout.write(
-            Style.SUCCESS(f'Successfully created {created_count} new Pirate Queens')
+            self.style.SUCCESS(f'Successfully created {created_count} new Pirate Queens')
         )
