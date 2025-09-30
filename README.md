@@ -29,12 +29,14 @@ This interactive web-based battleship game transforms the classic naval warfare 
 ## **[How to Play](#how-to-play)**
 
 ### Getting Started
+
 1. **Visit the Game**: Navigate to the [live deployment](https://better-ships-battle-better.herokuapp.com/)
-2. **Choose Your Path**: 
+2. **Choose Your Path**:
    - **Guest Play**: Jump straight into battle without registration
    - **Create Account**: Register for full pirate captain experience with statistics tracking
 
 ### Pirate Captain Setup (Registered Users)
+
 1. **Create Your Profile**: Choose your pirate captain name and write your naval biography
 2. **Select Your Avatar**: Pick from historical Pirate Queen avatars
 3. **Set Difficulty**: Choose your challenge level:
@@ -43,6 +45,7 @@ This interactive web-based battleship game transforms the classic naval warfare 
    - **Hard**: 10 cannonballs
 
 ### Naval Combat
+
 1. **Battle Grid**: Face an 8x8 tactical grid with 5 hidden enemy ships
 2. **Fleet Composition**: Hunt down the enemy fleet:
    - Carrier (5 spaces)
@@ -51,7 +54,7 @@ This interactive web-based battleship game transforms the classic naval warfare 
    - Submarine (3 spaces)
    - Destroyer (2 spaces)
 3. **Fire Cannonballs**: Click grid coordinates to launch attacks
-4. **Track Results**: 
+4. **Track Results**:
    - 💥 Direct hits on enemy ships
    - 🌊 Misses in open water
    - 🚢 Sunken ships
@@ -60,24 +63,28 @@ This interactive web-based battleship game transforms the classic naval warfare 
 ## **[Features](#features)**
 
 ### 🏴‍☠️ **Pirate-Themed Naval Combat**
+
 - Interactive 8x8 battleship grid with tactical gameplay
 - 5 strategically placed ships with realistic naval vessel sizes
 - Real-time battle feedback with naval emojis and animations
 - Strategic ammunition management system based on difficulty
 
 ### 👤 **Complete User Authentication System**
+
 - User registration with automatic pirate profile creation
 - Secure login/logout with Django session management
 - Guest play option for immediate access
 - Protected routes for authenticated features
 
 ### 🏴‍☠️ **Pirate Captain Profile System**
+
 - Custom pirate captain names and biographical stories
 - Historical Pirate Queen avatar selection system
 - Difficulty preference settings with ammunition scaling
 - Profile editing and management interface
 
 ### 📊 **Battle Statistics & History Tracking**
+
 - Comprehensive battle history with timestamps
 - Win/loss statistics and win rate calculations
 - Average shots fired and total ships sunk metrics
@@ -85,12 +92,14 @@ This interactive web-based battleship game transforms the classic naval warfare 
 - AJAX-powered real-time game result saving
 
 ### 🎯 **Dashboard & Analytics**
+
 - Personal captain dashboard with recent battles
 - Detailed game history viewing system
 - Performance analytics and achievement tracking
 - Quick access to profile management tools
 
 ### 🎨 **Modern Naval-Themed Interface**
+
 - Immersive pirate/naval aesthetic with authentic color schemes
 - Responsive grid-based layouts for all devices
 - Interactive hover effects and smooth animations
@@ -100,23 +109,27 @@ This interactive web-based battleship game transforms the classic naval warfare 
 ## **[Technology Stack](#technology-stack)**
 
 ### **Backend**
+
 - **Django 4.2.9**: Web framework with MVC architecture
 - **Python 3.11**: Core programming language
 - **Gunicorn**: WSGI HTTP Server for production
 - **WhiteNoise**: Static file serving middleware
 
 ### **Database & Models**
+
 - **SQLite**: Development database
 - **PostgreSQL**: Production database (Heroku)
 - **Custom Models**: PirateQueen, UserProfile, Game tracking
 
 ### **Frontend**
+
 - **HTML5**: Semantic markup structure
 - **CSS3**: Naval-themed styling and responsive design
 - **JavaScript**: Interactive gameplay and AJAX functionality
 - **Bootstrap**: Responsive grid system and components
 
 ### **Deployment & DevOps**
+
 - **Heroku**: Cloud platform deployment
 - **Git**: Version control system
 - **GitHub**: Repository hosting and collaboration
@@ -125,17 +138,20 @@ This interactive web-based battleship game transforms the classic naval warfare 
 ## **[Game Mechanics](#game-mechanics)**
 
 ### **Ship Placement Algorithm**
+
 - Randomized ship positioning using Python's `randint()` method
 - Collision detection prevents ship overlap
 - Strategic placement ensures balanced gameplay difficulty
 
 ### **Battle System**
+
 - Click-based coordinate targeting system
 - Real-time hit/miss validation and feedback
 - Ammunition tracking with difficulty-based limits
 - Victory/defeat condition checking
 
 ### **Scoring System**
+
 - Battle completion tracking with timestamps
 - Shot accuracy calculations and statistics
 - Win rate percentages and performance metrics
@@ -144,12 +160,14 @@ This interactive web-based battleship game transforms the classic naval warfare 
 ## **[User System](#user-system)**
 
 ### **Authentication Flow**
+
 - Django's built-in authentication system
 - Automatic profile creation upon registration
 - Session-based login state management
 - Secure password handling and validation
 
 ### **Profile Management**
+
 - Pirate captain customization interface
 - Avatar selection from historical figures
 - Biographical information and preferences
@@ -158,12 +176,15 @@ This interactive web-based battleship game transforms the classic naval warfare 
 ## **[Deployment](#deployment)**
 
 ### **Live Production Environment**
+
 The game is deployed on Heroku with the following configuration:
 
-**Primary Deployment**: https://better-ships-battle-better.herokuapp.com/
-**Secondary Deployment**: https://pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com/
+**Primary Deployment**: [https://better-ships-battle-better.herokuapp.com/](https://better-ships-battle-better.herokuapp.com/)
+
+**Secondary Deployment**: [https://pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com/](https://pirate-queens-sea-battles-a92eba2c9a74.herokuapp.com/)
 
 ### **Deployment Process**
+
 1. **Heroku Setup**: Create new Heroku application
 2. **Environment Configuration**: Set production environment variables
 3. **Database Migration**: Configure PostgreSQL database
@@ -171,6 +192,7 @@ The game is deployed on Heroku with the following configuration:
 5. **Process Configuration**: Gunicorn WSGI server setup
 
 ### **Key Configuration Files**
+
 - `Procfile`: Heroku process configuration
 - `requirements.txt`: Python dependencies
 - `settings.py`: Django production settings
@@ -181,34 +203,40 @@ The game is deployed on Heroku with the following configuration:
 ### **Local Development Setup**
 
 1. **Clone Repository**
+
    ```bash
    git clone https://github.com/SamOBrienOlinger/Better-Ships-that-Battle-Better.git
    cd Better-Ships-that-Battle-Better
    ```
 
 2. **Create Virtual Environment**
+
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
 3. **Install Dependencies**
+
    ```bash
    pip install -r requirements.txt
    ```
 
 4. **Database Setup**
+
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
 5. **Create Superuser** (Optional)
+
    ```bash
    python manage.py createsuperuser
    ```
 
 6. **Run Development Server**
+
    ```bash
    python manage.py runserver 8080
    ```
@@ -216,8 +244,10 @@ The game is deployed on Heroku with the following configuration:
 7. **Access Game**: Navigate to `http://localhost:8080`
 
 ### **Environment Variables**
+
 Create a `.env` file in the project root:
-```
+
+```env
 DEBUG=True
 SECRET_KEY=your-secret-key-here
 DATABASE_URL=sqlite:///db.sqlite3
@@ -226,6 +256,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 ## **[Credits](#credits)**
 
 ### **Development Resources**
+
 - **[Code Institute LMS](https://learn.codeinstitute.net/)**: Portfolio project guidance and Django tutorials
 - **[Django Documentation](https://docs.djangoproject.com/)**: Framework reference and best practices
 - **[W3Schools](https://www.w3schools.com/)**: HTML, CSS, and JavaScript tutorials
@@ -234,6 +265,7 @@ DATABASE_URL=sqlite:///db.sqlite3
 - **[Geeks for Geeks](https://www.geeksforgeeks.org/)**: Python programming tutorials
 
 ### **Original Battleship Logic**
+
 Core game board logic adapted from [Garrett Broughton's Battleship](https://github.com/gbrough/battleship):
 
 ```python
@@ -252,6 +284,7 @@ def print_board(self):
 ```
 
 ### **Historical References**
+
 - Pirate Queen avatars based on historical female pirates
 - Naval terminology and theming from maritime history
 - Ship classifications from real naval vessel types
@@ -259,11 +292,13 @@ def print_board(self):
 ## **[Acknowledgements](#acknowledgements)**
 
 ### **Educational Support**
+
 - **YouTube Tutorials**: Various Python game development and Django deployment guides
 - **[Sandeep Aggarwal](https://code-institute-room.slack.com/archives/D02TFLJRZTR)**: Mentor guidance and project feedback
 - **Code Institute Community**: Tutors and students providing support via Slack
 
 ### **Technical Contributors**
+
 - **[jo_ci](https://github.com/wings30306)**: Django authentication guidance
 - **[AlexaHendry_5P](https://code-institute-room.slack.com/team/U02FQKWTXGT)**: Frontend design feedback
 - **[oisin_ci](https://code-institute-room.slack.com/archives/D03NCBKR8BB)**: Deployment troubleshooting
@@ -271,6 +306,7 @@ def print_board(self):
 - **[alexandru_ci](https://code-institute-room.slack.com/archives/D03MK4WD9NK)**: Heroku deployment support
 
 ### **Special Recognition**
+
 - **Windsurf AI**: Advanced development assistance and code optimization
 - **Heroku Platform**: Reliable cloud deployment infrastructure
 - **Django Community**: Excellent framework documentation and community support

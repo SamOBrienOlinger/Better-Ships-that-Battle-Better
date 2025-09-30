@@ -11,7 +11,8 @@ The Django User model's default username validation has been customized to allow
 
 ## What Usernames Are Now Allowed
 
-### ✅ Previously FORBIDDEN usernames that now WORK:
+### ✅ Previously FORBIDDEN usernames that now WORK
+
 - `Captain O'Malley` (apostrophe)
 - `José María` (accented characters)
 - `王船長` (Chinese characters)
@@ -23,7 +24,8 @@ The Django User model's default username validation has been customized to allow
 - `Cap'n Jack & Co.` (ampersand and period)
 - `username with spaces` (spaces)
 
-### ✅ Still VALIDATED for:
+### ✅ Still VALIDATED for
+
 - **Maximum length**: 150 characters
 - **Uniqueness**: No duplicate usernames (case-insensitive check)
 - **Not empty**: Cannot be just whitespace
@@ -32,23 +34,28 @@ The Django User model's default username validation has been customized to allow
 ## Testing the Changes
 
 ### Test Case 1: Unicode Characters
+
 1. Go to the registration page
 2. Try username: `船長王`
 3. Should work successfully
 
 ### Test Case 2: Special Symbols
+
 1. Try username: `Pirate★Queen☠️`
 2. Should work successfully
 
 ### Test Case 3: Spaces and Punctuation
+
 1. Try username: `Captain O'Malley & Crew`
 2. Should work successfully
 
 ### Test Case 4: Mixed Characters
+
 1. Try username: `José María #1 Pirate!`
 2. Should work successfully
 
 ### Test Case 5: Validation Still Works
+
 1. Try empty username: (blank)
 2. Should show error: "Username is required."
 3. Try duplicate username
@@ -64,6 +71,7 @@ The Django User model's default username validation has been customized to allow
 ## Implementation Details
 
 The custom validation:
+
 - Allows any Unicode characters
 - Maintains security by checking length and uniqueness
 - Preserves exact case as entered by user
