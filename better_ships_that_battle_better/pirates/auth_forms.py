@@ -3,9 +3,11 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate
+import re
 
 
-class CustomUserCreationForm(UserCreationForm):
+class CustomUserCreationForm(forms.Form):
     """Custom user creation form that allows any characters in username."""
     
     username = forms.CharField(
@@ -44,10 +46,6 @@ class CustomUserCreationForm(UserCreationForm):
         help_text="Enter the same password as before, for verification."
     )
 
-    class Meta:
-        model = User
-        fields = ("username", "email", "password1", "password2")
-        
     def clean_username(self):
         """Custom username validation - allows any characters."""
         username = self.cleaned_data.get('username')
@@ -67,13 +65,28 @@ class CustomUserCreationForm(UserCreationForm):
             
         return username
 
+    def clean_password1(self):
+        """Validate password1."""
+        password1 = self.cleaned_data.get('password1')
+        if password1 and len(password1) < 8:
+            raise ValidationError("Password must be at least 8 characters long.")
+        return password1
+
+    def clean_password2(self):
+        """Validate that the two password entries match."""
+        password1 = self.cleaned_data.get("password1")
+        password2 = self.cleaned_data.get("password2")
+        if password1 and password2 and password1 != password2:
+            raise ValidationError("The two password fields didn't match.")
+        return password2
+
     def save(self, commit=True):
         """Save the user with the custom username validation."""
-        user = super().save(commit=False)
-        # Ensure username is saved exactly as entered
-        user.username = self.cleaned_data["username"]
-        if commit:
-            user.save()
+        user = User.objects.create_user(
+            username=self.cleaned_data["username"],
+            email=self.cleaned_data.get("email", ""),
+            password=self.cleaned_data["password1"]
+        )
         return user
 
 
