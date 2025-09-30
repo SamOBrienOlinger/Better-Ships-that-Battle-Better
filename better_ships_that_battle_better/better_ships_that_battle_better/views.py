@@ -1,22 +1,18 @@
-"""Core views for Better Ships That Battle Better project.
-
-This module contains views for user authentication, profile management and 
-game-related functionality.
-"""
+"""Main application views for Better Ships that Battle Better"""
 
 import json
-
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.db.models import Avg
+from django.contrib import messages
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Avg
 
-from pirates.auth_forms import CustomUserCreationForm, CustomAuthenticationForm
-from pirates.forms import UserProfileForm
-from pirates.models import Game, PirateQueen, UserProfile
+# Django app imports - these are valid at runtime
+from pirates.auth_forms import CustomUserCreationForm, CustomAuthenticationForm  # type: ignore
+from pirates.forms import UserProfileForm  # type: ignore
+from pirates.models import Game, PirateQueen, UserProfile  # type: ignore
 
 
 # Authentication Views

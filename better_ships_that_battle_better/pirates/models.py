@@ -1,6 +1,11 @@
+from typing import TYPE_CHECKING
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+
+if TYPE_CHECKING:
+    from django.db.models.manager import RelatedManager
+    from django.db.models.query import QuerySet
 
 class PirateQueen(models.Model):
     """Historical Pirate Queens for user avatars"""
@@ -11,7 +16,7 @@ class PirateQueen(models.Model):
     image_url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
     
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} ({self.historical_period})"
     
     class Meta:
@@ -26,6 +31,10 @@ class UserProfile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    # Type hints for Django reverse relations
+    if TYPE_CHECKING:
+        game_set: 'RelatedManager[Game]'
+    
     # Game preferences
     preferred_difficulty = models.CharField(
         max_length=20,
@@ -37,23 +46,25 @@ class UserProfile(models.Model):
         default='normal'
     )
     
-    def __str__(self):
-        return f"Captain {self.pirate_name} ({self.user.username})"
+    def __str__(self) -> str:
+        # Django provides access to related model fields
+        return f"Captain {self.pirate_name} ({self.user.username})"  # type: ignore[attr-defined]
     
     @property
-    def total_games(self):
-        return self.game_set.count()
+    def total_games(self) -> int:
+        # Django automatically creates reverse relationship managers
+        return self.game_set.count()  # type: ignore[attr-defined]
     
     @property
-    def wins(self):
-        return self.game_set.filter(result='win').count()
+    def wins(self) -> int:
+        return self.game_set.filter(result='win').count()  # type: ignore[attr-defined]
     
     @property
-    def losses(self):
-        return self.game_set.filter(result='loss').count()
+    def losses(self) -> int:
+        return self.game_set.filter(result='loss').count()  # type: ignore[attr-defined]
     
     @property
-    def win_percentage(self):
+    def win_percentage(self) -> float:
         if self.total_games == 0:
             return 0
         return round((self.wins / self.total_games) * 100, 1)
@@ -74,8 +85,9 @@ class Game(models.Model):
     duration_seconds = models.IntegerField(null=True, blank=True)
     played_at = models.DateTimeField(default=timezone.now)
     
-    def __str__(self):
-        return f"{self.player.pirate_name} - {self.get_result_display()} ({self.played_at.strftime('%Y-%m-%d')})"
+    def __str__(self) -> str:
+        # Django provides get_*_display methods for choice fields and related field access
+        return f"{self.player.pirate_name} - {self.get_result_display()} ({self.played_at.strftime('%Y-%m-%d')})"  # type: ignore[attr-defined]
     
     class Meta:
         ordering = ['-played_at']
