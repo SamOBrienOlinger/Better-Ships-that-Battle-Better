@@ -9,12 +9,12 @@ import json
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Avg
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
+from pirates.auth_forms import CustomUserCreationForm, CustomAuthenticationForm
 from pirates.forms import UserProfileForm
 from pirates.models import Game, PirateQueen, UserProfile
 
@@ -23,7 +23,7 @@ from pirates.models import Game, PirateQueen, UserProfile
 def register_view(request):
     """User registration"""
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
@@ -34,22 +34,25 @@ def register_view(request):
             login(request, user)
             return redirect('profile_create')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
 def login_view(request):
     """Custom login view"""
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard')
-        else:
-            messages.error(request, 'Invalid username or password.')
-    return render(request, 'registration/login.html')
+        form = CustomAuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('dashboard')
+        messages.error(request, 'Invalid username or password.')
+    else:
+        form = CustomAuthenticationForm()
+    return render(request, 'registration/login.html', {'form': form})
 
 
 def logout_view(request):
