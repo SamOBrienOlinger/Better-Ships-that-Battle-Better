@@ -1,12 +1,9 @@
 """Django management command to populate the database with historical Pirate Queens."""
 from django.core.management.base import BaseCommand
 from pirates.models import PirateQueen
-
-
 class Command(BaseCommand):
     """Management command to populate PirateQueen data."""
     help = 'Populate the database with historical Pirate Queens'
-
     def handle(self, *args, **options):
         pirate_queens_data = [
             {
@@ -122,7 +119,6 @@ class Command(BaseCommand):
                 )
             }
         ]
-
         created_count = 0
         for queen_data in pirate_queens_data:
             queen, created = PirateQueen.objects.get_or_create(
@@ -138,7 +134,6 @@ class Command(BaseCommand):
                 self.stdout.write(
                     self.style.WARNING(f'Pirate Queen already exists: {queen.name}')
                 )
-
         self.stdout.write(
             self.style.SUCCESS(f'Successfully created {created_count} new Pirate Queens')
         )

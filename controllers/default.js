@@ -1,22 +1,15 @@
 const Pty = require('node-pty');
 const fs = require('fs');
-
 exports.install = function () {
-
     ROUTE('/');
-
     // Render the HTML file
     FILE('/index.html', 'index.html');
-
     // WebSocket endpoint
     WEBSOCKET('/', socket, ['raw']);
-
 };
-
 function socket() {
     this.encodedecode = false;
     this.autodestroy();
-
     this.on('open', function (client) {
         client.tty = Pty.spawn('python3', ['run.py'], {
             name: 'xterm-color',
@@ -25,18 +18,15 @@ function socket() {
             cwd: process.env.PWD,
             env: process.env
         });
-
         client.tty.on('exit', function (code, signal) {
             client.tty = null;
             client.close();
             console.log("Process killed");
         });
-
         client.tty.on('data', function (data) {
             client.send(data);
         });
     });
-
     this.on('close', function (client) {
         if (client.tty) {
             client.tty.kill(9);
@@ -44,12 +34,10 @@ function socket() {
             console.log("Process killed and terminal unloaded");
         }
     });
-
     this.on('message', function (client, msg) {
         client.tty && client.tty.write(msg);
     });
 }
-
 if (process.env.CREDS != null) {
     console.log("Creating creds.json file.");
     fs.writeFile('creds.json', process.env.CREDS, 'utf8', function (err) {
@@ -59,24 +47,16 @@ if (process.env.CREDS != null) {
         }
     });
 }
-
 // const Pty = require('node-pty');
 // const fs = require('fs');
-
 // exports.install = function () {
-
 //     ROUTE('/');
 //     WEBSOCKET('/', socket, ['raw']);
-
 // };
-
 // function socket() {
-
 //     this.encodedecode = false;
 //     this.autodestroy();
-
 //     this.on('open', function (client) {
-
 //         // Spawn terminal
 //         client.tty = Pty.spawn('python3', ['run.py'], {
 //             name: 'xterm-color',
@@ -85,19 +65,15 @@ if (process.env.CREDS != null) {
 //             cwd: process.env.PWD,
 //             env: process.env
 //         });
-
 //         client.tty.on('exit', function (code, signal) {
 //             client.tty = null;
 //             client.close();
 //             console.log("Process killed");
 //         });
-
 //         client.tty.on('data', function (data) {
 //             client.send(data);
 //         });
-
 //     });
-
 //     this.on('close', function (client) {
 //         if (client.tty) {
 //             client.tty.kill(9);
@@ -105,12 +81,10 @@ if (process.env.CREDS != null) {
 //             console.log("Process killed and terminal unloaded");
 //         }
 //     });
-
 //     this.on('message', function (client, msg) {
 //         client.tty && client.tty.write(msg);
 //     });
 // }
-
 // if (process.env.CREDS != null) {
 //     console.log("Creating creds.json file.");
 //     fs.writeFile('creds.json', process.env.CREDS, 'utf8', function (err) {

@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
-
 {% block title %}Game History - Better Ships that Battle Better{% endblock %}
-
 {% block content %}
 <div class="container-wide">
     <h2 class="text-center mb-30">📜 Battle History</h2>
-    
     <!-- Summary Stats -->
     <div class="stats-grid mb-30">
         <div class="stat-card">
@@ -25,7 +22,6 @@
             <div>Win Rate</div>
         </div>
     </div>
-    
     <!-- Games List -->
     <div class="panel-alt">
         {% if games %}
@@ -94,7 +90,6 @@
                     </tbody>
                 </table>
             </div>
-            
             <!-- Pagination -->
             {% if is_paginated %}
                 <div class="text-center mt-30">
@@ -103,11 +98,9 @@
                             <a href="?page=1" class="btn mx-10">First</a>
                             <a href="?page={{ page_obj.previous_page_number }}" class="btn mx-10">Previous</a>
                         {% endif %}
-                        
                         <span class="mx-10 text-accent">
                             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                         </span>
-                        
                         {% if page_obj.has_next %}
                             <a href="?page={{ page_obj.next_page_number }}" class="btn mx-10">Next</a>
                             <a href="?page={{ page_obj.paginator.num_pages }}" class="btn mx-10">Last</a>
@@ -115,7 +108,6 @@
                     </div>
                 </div>
             {% endif %}
-            
         {% else %}
             <div class="text-center muted p-40">
                 <h3>No battles recorded yet, Captain!</h3>
@@ -126,7 +118,6 @@
             </div>
         {% endif %}
     </div>
-    
     <!-- Action Buttons -->
     <div class="text-center mt-30">
         <a href="{% url 'dashboard' %}" class="btn mx-10">📊 Back to Dashboard</a>

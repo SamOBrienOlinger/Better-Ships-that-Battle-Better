@@ -11,10 +11,9 @@
   --warning: #666600;
   --border: var(--accent);
 }
-
 /* Base */
-* { 
-  box-sizing: border-box; 
+* {
+  box-sizing: border-box;
   color: whitesmoke; /* Ensure all elements default to whitesmoke */
 }
 html, body { height: 100%; }
@@ -25,11 +24,9 @@ body {
   margin: 0;
   padding: 20px;
 }
-
 .container { max-width: 1200px; margin: 0 auto; }
 .narrow { max-width: 800px; margin: 0 auto; }
 .text-center { text-align: center; }
-
 /* Header */
 .header {
   text-align: center;
@@ -40,14 +37,13 @@ body {
 }
 .header h1 { margin: 0; font-size: 2.5rem; color: whitesmoke; text-shadow: 0 0 10px var(--accent); }
 .header .subtitle { color: whitesmoke; margin: 6px 0 0; }
-
 /* Nav */
-.nav { 
-  text-align: center; 
-  margin: 20px 0; 
-  display: flex; 
-  flex-wrap: wrap; 
-  justify-content: center; 
+.nav {
+  text-align: center;
+  margin: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
 }
 .nav a {
@@ -66,44 +62,41 @@ body {
   flex: 0 1 auto;
   min-width: 100px;
 }
-.nav a:hover { 
-  background: var(--accent); 
-  color: #000; 
+.nav a:hover {
+  background: var(--accent);
+  color: #000;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
   transform: translateY(-1px);
 }
-
 /* Content panel */
 .content { background: var(--panel); border: 1px solid var(--border); padding: 30px; margin: 20px 0; }
-
 /* Buttons */
-.btn { 
-  background: var(--panel-2); 
-  color: whitesmoke; 
-  border: 2px solid var(--accent); 
-  padding: 12px 22px; 
-  cursor: pointer; 
-  font-family: inherit; 
-  font-size: 16px; 
+.btn {
+  background: var(--panel-2);
+  color: whitesmoke;
+  border: 2px solid var(--accent);
+  padding: 12px 22px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
   font-weight: bold;
-  transition: all .3s ease; 
-  display: inline-block; 
+  transition: all .3s ease;
+  display: inline-block;
   text-decoration: none;
   border-radius: 4px;
   text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
   box-shadow: 0 0 10px rgba(0, 72, 255, 0.2);
 }
-.btn:hover { 
-  background: var(--accent); 
-  color: #000; 
+.btn:hover {
+  background: var(--accent);
+  color: #000;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
   transform: translateY(-2px);
 }
 .btn-lg { font-size: 20px; padding: 16px 32px; }
 .btn-sm { font-size: 14px; padding: 8px 14px; }
-
 /* Ensure anchor buttons behave like buttons */
 a.btn {
   text-decoration: none !important;
@@ -111,96 +104,86 @@ a.btn {
 a.btn:hover {
   text-decoration: none !important;
 }
-
 /* Forms */
 .form-group { margin: 15px 0; }
 .form-group label { display: block; margin-bottom: 6px; color: whitesmoke; }
 .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; background: var(--panel-2); color: whitesmoke; border: 1px solid var(--border); }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; box-shadow: 0 0 5px var(--accent); }
-
 /* Messages */
 .messages { margin: 20px 0; }
 .message { padding: 10px; margin: 10px 0; border: 1px solid var(--border); background: var(--panel-2); }
 .message.error { border-color: var(--danger); color: var(--danger); background: #220000; }
 .message.success { border-color: var(--accent); color: var(--accent); }
-
 /* Cards and grids */
-.stats-grid, .feature-grid { 
-  display: grid; 
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-  gap: 20px; 
+.stats-grid, .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
 }
-.stat-card, .feature-card { 
-  border: 1px solid var(--border); 
-  padding: 15px; 
-  text-align: center; 
-  background: var(--panel-2); 
+.stat-card, .feature-card {
+  border: 1px solid var(--border);
+  padding: 15px;
+  text-align: center;
+  background: var(--panel-2);
   border-radius: 4px;
 }
 .stat-number { font-size: 2rem; font-weight: 700; color: var(--accent); text-shadow: 0 0 5px var(--accent); }
-
 /* Pirate queen options */
 .pirate-queen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
 .pirate-queen-option { border: 2px solid #004400; padding: 15px; text-align: center; cursor: pointer; transition: all .25s ease; background: var(--panel); }
 .pirate-queen-option:hover { border-color: var(--accent); background: var(--panel-2); }
 .pirate-queen-option.selected { border-color: var(--accent); background: var(--panel-2); box-shadow: 0 0 10px var(--accent); }
 .pirate-queen-option img { width: 100px; height: 100px; object-fit: cover; border: 1px solid var(--border); margin-bottom: 10px; }
-
 /* Hero */
 .hero { text-align: center; margin-bottom: 30px; }
 .hero-image { max-width: 100%; height: auto; border: 3px solid var(--border); border-radius: 10px; box-shadow: 0 0 20px rgba(0, 72, 255, 0.25); }
 .hero-title { color: whitesmoke; font-size: 3rem; margin: 20px 0 10px; text-shadow: 0 0 15px var(--accent); }
 .hero-subtitle { font-size: 1.25rem; color: whitesmoke; margin-bottom: 10px; }
 .hero-bullets { color: whitesmoke; font-size: 1.05rem; }
-
 /* Panels */
 .panel { border: 2px solid var(--border); padding: 20px; margin: 30px 0; background: var(--panel); }
 .panel .panel-image { text-align: center; margin-bottom: 20px; }
 .panel .panel-image img { max-width: 320px; height: auto; border: 1px solid var(--border); }
 .panel h3 { color: whitesmoke; margin-bottom: 16px; text-align: left; }
 .panel ul { color: whitesmoke; font-size: 14px; text-align: left; }
-
 /* Utility sections for home.html */
 .hero-profile { margin: 20px 0; display: flex; flex-direction: column; align-items: center; }
 .hero-profile-image { width: 120px; height: 120px; object-fit: cover; border: 2px solid var(--border); border-radius: 50%; }
 .action-buttons { margin: 40px 0; text-align: center; }
 .action-links { margin-top: 16px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .feature-card h4, .panel h3 { color: whitesmoke; }
-
 /* Game page layout */
 .game-container { text-align: center; }
 .game-status { margin-bottom: 20px; padding: 15px; border: 1px solid var(--border); background-color: var(--panel-2); }
 .battlefield { display: inline-block; border: 2px solid var(--border); padding: 20px; background-color: var(--panel); overflow: auto; }
-.grid { 
-  display: grid; 
-  grid-template-columns: repeat(8, minmax(35px, 50px)); 
-  grid-template-rows: repeat(8, minmax(35px, 50px)); 
-  gap: 2px; 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(35px, 50px));
+  grid-template-rows: repeat(8, minmax(35px, 50px));
+  gap: 2px;
   max-width: 100%;
 }
-
 /* Grid cells (game) */
-.grid-cell { 
-  width: 100%; 
-  height: 100%; 
-  min-width: 35px; 
-  min-height: 35px; 
+.grid-cell {
+  width: 100%;
+  height: 100%;
+  min-width: 35px;
+  min-height: 35px;
   aspect-ratio: 1;
-  background: #003300; 
-  border: 1px solid var(--border); 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-  cursor: pointer; 
-  font-size: clamp(12px, 4vw, 20px); 
-  transition: background-color .3s ease; 
+  background: #003300;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: clamp(12px, 4vw, 20px);
+  transition: background-color .3s ease;
   touch-action: manipulation;
 }
 .grid-cell:hover { background: #006600; }
 .grid-cell.hit { background: var(--danger); }
 .grid-cell.miss { background: var(--info); }
 .grid-cell.reveal { background: var(--warning); }
-
 /* Utilities */
 .mt-15{margin-top:15px;} .mt-20{margin-top:20px;} .mt-30{margin-top:30px;} .mt-40{margin-top:40px;}
 .mb-15{margin-bottom:15px;} .mb-20{margin-bottom:20px;} .mb-30{margin-bottom:30px;} .mb-40{margin-bottom:40px;}
@@ -210,31 +193,24 @@ a.btn:hover {
 .muted{color: whitesmoke;} .text-accent{color: whitesmoke;} .text-danger{color:#ff6666;}
 .container-wide{max-width:1000px;margin:0 auto;}
 .overflow-x-auto{overflow-x:auto;}
-
 /* Layout helpers */
 .grid-1-2{display:grid;grid-template-columns:1fr 2fr;gap:30px;}
-
 /* Panels */
 .panel-alt{border:1px solid var(--border);background:var(--panel-2);padding:20px;}
-
 /* Images */
-.avatar-lg{width:120px;height:120px;object-fit:cover;border:2px solid var(--border);} 
-
+.avatar-lg{width:120px;height:120px;object-fit:cover;border:2px solid var(--border);}
 /* Tables */
 .table{width:100%;border-collapse:collapse;}
-.table thead tr{border-bottom:1px solid var(--border);} 
+.table thead tr{border-bottom:1px solid var(--border);}
 .table th,.table td{padding:10px;text-align:left;color:whitesmoke;}
 .table tbody tr{border-bottom:1px solid #004400;}
-
 /* Footer */
 .footer { text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--border); color: whitesmoke; }
-
 /* Additional utility classes */
 .text-warning{color:#ffff00;}
 .p-40{padding:40px;}
 .mb-30{margin-bottom:30px;}
 .mt-30{margin-top:30px;}
-
 /* Terminal Styles */
 .terminal-panel {
   background-color: #111;
@@ -243,237 +219,193 @@ a.btn:hover {
   padding: 20px;
   min-height: 500px;
 }
-
 .terminal-text {
   white-space: pre-wrap;
   margin-bottom: 20px;
   font-family: 'Courier New', monospace;
   color: #00ff00;
 }
-
 /* Global text color enforcement - ensure ALL text is whitesmoke */
-h1, h2, h3, h4, h5, h6, p, span, div, li, a, td, th, 
+h1, h2, h3, h4, h5, h6, p, span, div, li, a, td, th,
 label, input, textarea, select, button, .btn {
   color: whitesmoke !important;
 }
-
 /* Override any remaining text colors */
 * {
   color: whitesmoke;
 }
-
 /* Specific element overrides for better UX */
 .nav a {
   color: whitesmoke !important; /* Use whitesmoke for navigation links */
 }
-
 .nav a:hover {
   color: #000 !important; /* Dark text on bright hover background */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
 }
-
 .btn {
   color: whitesmoke !important; /* Ensure buttons use whitesmoke text */
   font-weight: bold !important;
 }
-
 .btn:hover {
   color: #000 !important; /* Dark text on bright hover background */
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8) !important;
 }
-
 .stat-number {
   color: var(--accent) !important; /* Keep accent color for stats */
 }
-
 .message.error {
   color: var(--danger) !important; /* Keep error message color */
 }
-
 .message.success {
   color: var(--accent) !important; /* Keep success message color */
 }
-
 .text-warning {
   color: #ffff00 !important; /* Keep warning color */
 }
-
 .text-danger {
   color: #ff6666 !important; /* Keep danger color */
 }
-
 /* ========================================
    RESPONSIVE DESIGN FOR MOBILE DEVICES
    ======================================== */
-
 /* Mobile First - Base styles for mobile */
 @media (max-width: 768px) {
   body {
     padding: 10px;
     font-size: 14px;
   }
-  
   .container, .narrow, .container-wide {
     max-width: 100%;
     padding: 0 10px;
   }
-  
   .header {
     padding: 15px 10px;
     margin-bottom: 20px;
   }
-  
   .header h1 {
     font-size: 1.8rem;
   }
-  
   .nav {
     gap: 8px;
     margin: 15px 0;
   }
-  
   .nav a {
     padding: 8px 12px;
     font-size: 14px;
     min-width: 80px;
   }
-  
   .btn {
     padding: 10px 16px;
     font-size: 14px;
     margin: 5px;
   }
-  
   .content {
     padding: 15px;
     margin: 10px 0;
   }
-  
   /* Game grid responsive */
   .battlefield {
     padding: 10px;
     overflow-x: auto;
   }
-  
   .grid {
     grid-template-columns: repeat(8, minmax(30px, 40px));
     grid-template-rows: repeat(8, minmax(30px, 40px));
     gap: 1px;
   }
-  
   .grid-cell {
     min-width: 30px;
     min-height: 30px;
     font-size: clamp(10px, 3vw, 16px);
   }
-  
   /* Stats grid responsive */
   .stats-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
-  
   .feature-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
-  
   .grid-1-2 {
     grid-template-columns: 1fr;
     gap: 20px;
   }
-  
   /* Typography scaling */
   h1 { font-size: 1.8rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.3rem; }
   h4 { font-size: 1.1rem; }
 }
-
 /* iPhone 15 Pro Max and similar large phones */
 @media (max-width: 430px) {
   .grid {
     grid-template-columns: repeat(8, minmax(28px, 35px));
     grid-template-rows: repeat(8, minmax(28px, 35px));
   }
-  
   .grid-cell {
     min-width: 28px;
     min-height: 28px;
     font-size: 12px;
   }
-  
   .nav a {
     padding: 6px 10px;
     font-size: 13px;
     min-width: 70px;
   }
-  
   .header h1 {
     font-size: 1.5rem;
   }
 }
-
 /* Very small screens (iPhone SE, etc.) */
 @media (max-width: 375px) {
   body {
     padding: 5px;
   }
-  
   .grid {
     grid-template-columns: repeat(8, minmax(25px, 30px));
     grid-template-rows: repeat(8, minmax(25px, 30px));
   }
-  
   .grid-cell {
     min-width: 25px;
     min-height: 25px;
     font-size: 10px;
   }
-  
   .nav {
     gap: 5px;
   }
-  
   .nav a {
     padding: 5px 8px;
     font-size: 12px;
     min-width: 60px;
   }
-  
   .btn {
     padding: 8px 12px;
     font-size: 13px;
   }
 }
-
 /* Landscape orientation on mobile */
 @media (max-height: 500px) and (orientation: landscape) {
   .header {
     padding: 10px;
     margin-bottom: 15px;
   }
-  
   .header h1 {
     font-size: 1.5rem;
   }
-  
   .nav {
     margin: 10px 0;
   }
-  
   .content {
     padding: 10px;
   }
 }
-
 /* Touch improvements */
 @media (hover: none) and (pointer: coarse) {
   .grid-cell {
     min-width: 35px;
     min-height: 35px;
   }
-  
   .btn, .nav a {
     min-height: 44px; /* Apple's recommended touch target size */
   }

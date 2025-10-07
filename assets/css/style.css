@@ -3,7 +3,6 @@
 	box-sizing: border-box;
 	color: whitesmoke; /* Ensure all elements use whitesmoke text */
 }
-
 body {
 	font-family: 'Lato', 'sans-serif';
 	margin: 0;
@@ -11,7 +10,6 @@ body {
 	font-weight: 300;
 	color: whitesmoke; /* Set body text to whitesmoke */
 }
-
 #image {
 	background-image: url(../images/battleship-hit.webp);
 	background-position-x: 20%;
@@ -22,9 +20,8 @@ body {
 	outline-color: #7112ee;
 	width: 30vw
 }
-
 /* Global text color enforcement */
-h1, h2, h3, h4, h5, h6, p, span, div, li, a, td, th, 
+h1, h2, h3, h4, h5, h6, p, span, div, li, a, td, th,
 label, input, textarea, select, button {
 	color: whitesmoke !important;
 }

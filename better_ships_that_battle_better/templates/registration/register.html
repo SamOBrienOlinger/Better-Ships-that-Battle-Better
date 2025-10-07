@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
-
 {% block title %}Register - Better Ships that Battle Better{% endblock %}
-
 {% block content %}
 <div class="narrow">
     <h2 class="text-center mb-30">📝 Join the Fleet</h2>
-    
     <form method="post">
         {% csrf_token %}
-        
         <div class="form-group">
             <label for="{{ form.username.id_for_label }}">Username:</label>
             {{ form.username }}
@@ -23,7 +19,6 @@
                 <div class="muted small mt-15">{{ form.username.help_text }}</div>
             {% endif %}
         </div>
-        
         <div class="form-group">
             <label for="{{ form.email.id_for_label }}">Email:</label>
             {{ form.email }}
@@ -35,7 +30,6 @@
                 </div>
             {% endif %}
         </div>
-        
         <div class="form-group">
             <label for="{{ form.password1.id_for_label }}">Password:</label>
             {{ form.password1 }}
@@ -50,7 +44,6 @@
                 <div class="muted small mt-15">{{ form.password1.help_text }}</div>
             {% endif %}
         </div>
-        
         <div class="form-group">
             <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
             {{ form.password2 }}
@@ -62,7 +55,6 @@
                 </div>
             {% endif %}
         </div>
-        
         {% if form.non_field_errors %}
             <div class="text-danger mt-15">
                 {% for error in form.non_field_errors %}
@@ -70,12 +62,10 @@
                 {% endfor %}
             </div>
         {% endif %}
-        
         <div class="text-center mt-30">
             <button type="submit" class="btn">⚓ Enlist in the Navy</button>
         </div>
     </form>
-    
     <div class="text-center mt-30 panel">
         <p>Already have an account?</p>
         <a href="{% url 'login' %}" class="btn">🔑 Login</a>

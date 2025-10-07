@@ -40,5 +40,10 @@
    },
    "files.autoSave": "off",
    "workbench.colorTheme": "Visual Studio Dark",
-   "editor.defaultFormatter": "ms-python.python"
+   "editor.defaultFormatter": "ms-python.python",
+   "markdownlint.config": {
+      "MD022": false,
+      "MD032": false,
+      "MD031": false
+   }
 }

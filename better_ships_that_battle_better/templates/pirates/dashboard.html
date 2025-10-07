@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
-
 {% block title %}Dashboard - Better Ships that Battle Better{% endblock %}
-
 {% block content %}
 <div class="container-wide">
     <h2 class="text-center mb-30">📊 Captain's Dashboard</h2>
-    
     <!-- Profile Section -->
     <div class="grid-1-2 mb-40">
         <div class="panel-alt">
@@ -13,7 +10,7 @@
             {% if profile %}
                 <div class="text-center">
                     {% if profile.chosen_pirate_queen %}
-                        <img src="{{ profile.chosen_pirate_queen.image_url }}" alt="{{ profile.chosen_pirate_queen.name }}" 
+                        <img src="{{ profile.chosen_pirate_queen.image_url }}" alt="{{ profile.chosen_pirate_queen.name }}"
                              class="avatar-lg mb-15"
                              onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiBmaWxsPSIjMDAyMjAwIi8+Cjx0ZXh0IHg9IjYwIiB5PSI2NSIgZm9udC1mYW1pbHk9IkNvdXJpZXIgTmV3IiBmb250LXNpemU9IjE0IiBmaWxsPSIjMDBmZjAwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5QaXJhdGU8L3RleHQ+CjwvZXZnPg=='">
                         <h4>{{ profile.chosen_pirate_queen.name }}</h4>
@@ -36,7 +33,6 @@
                 </div>
             {% endif %}
         </div>
-        
         <!-- Stats Section -->
         <div>
             <h3 class="text-center mb-20">⚔️ Battle Statistics</h3>
@@ -68,7 +64,6 @@
             </div>
         </div>
     </div>
-    
     <!-- Recent Games Section -->
     <div class="panel-alt mb-30">
         <h3 class="text-center mb-20">📜 Recent Battles</h3>
@@ -121,7 +116,6 @@
             </div>
         {% endif %}
     </div>
-    
     <!-- Action Buttons -->
     <div class="text-center">
         <a href="{% url 'game' %}" class="btn btn-lg mx-10">⚓ Battle Now</a>

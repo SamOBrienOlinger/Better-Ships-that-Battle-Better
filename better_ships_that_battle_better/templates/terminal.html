@@ -1,34 +1,26 @@
 {% extends 'base.html' %}
-
 {% block title %}Terminal - Better Ships that Battle Better{% endblock %}
-
 {% block content %}
 <div class="container-wide">
     <div class="terminal-panel">
         <div class="terminal-text">
 ⚓ BETTER SHIPS THAT BATTLE BETTER - COMMAND LINE VERSION ⚓
-
 The command line version requires running the Python script directly.
 To play the full interactive terminal version:
-
 1. Open a terminal/command prompt
 2. Navigate to your project directory
 3. Run: python run.py
 4. Follow the on-screen prompts
-
 For now, enjoy the web-based version!
-
 🎯 GAME RULES:
 - 8x8 grid (rows 1-8, columns A-H)
 - 5 hidden enemy ships
 - 10 cannonballs to sink them all
 - Enter coordinates when prompted
 - Sink all ships to win!
-
 Good luck, Captain! ⚓
         </div>
     </div>
-    
     <div class="text-center mt-20">
         <a href="{% url 'game' %}" class="btn">⚓ Play Web Version</a>
         <a href="{% url 'home' %}" class="btn ml-10">🏠 Home</a>

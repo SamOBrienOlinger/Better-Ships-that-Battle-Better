@@ -1,12 +1,10 @@
 [tool.pyright]
 include = ["better_ships_that_battle_better"]
 exclude = ["**/migrations"]
-
 # Django configuration
 executionEnvironments = [
   { root = "better_ships_that_battle_better", pythonVersion = "3.11", extraPaths = ["."] }
 ]
-
 # Django settings
 reportMissingImports = false
 reportMissingTypeStubs = false
@@ -19,19 +17,17 @@ reportUnknownVariableType = false
 reportUnknownMemberType = false
 reportMissingParameterType = false
 reportUnknownArgumentType = false
-
 # Django-specific ignores
 [tool.pylint.messages_control]
 disable = [
     "no-member",
-    "import-error", 
+    "import-error",
     "no-name-in-module",
     "unused-import",
     "too-few-public-methods",
     "missing-docstring",
     "invalid-name"
 ]
-
 [tool.mypy]
 mypy_path = "better_ships_that_battle_better"
 python_version = "3.11"
@@ -41,11 +37,9 @@ warn_redundant_casts = false
 warn_unused_configs = false
 no_implicit_optional = false
 show_error_codes = false
-
 [[tool.mypy.overrides]]
 module = "pirates.*"
 ignore_errors = true
-
-[[tool.mypy.overrides]]  
+[[tool.mypy.overrides]]
 module = "better_ships_that_battle_better.*"
 ignore_errors = true

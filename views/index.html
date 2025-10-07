@@ -14,32 +14,26 @@
         const socket = new WebSocket('wss://samobrienol-betterships-jtqkyun94nw.ws-eu107.gitpod.io/');
         const term = new Terminal();
         term.open(document.getElementById('terminal'));
-
         socket.onopen = function () {
             term.writeln('WebSocket connection opened!');
         };
-
         socket.onmessage = function (event) {
             term.write(event.data);
         };
-
         socket.onerror = function (error) {
             term.writeln('WebSocket error: ' + error.message);
         };
-
         socket.onclose = function (event) {
             term.writeln('WebSocket connection closed with code: ' + event.code);
         };
-
         term.onData(data => {
             socket.send(data);
         });
     </script>
 </body>
 </html>
-
     <!-- Your xterm.js code here -->
-    <!-- 
+    <!--
     <script>
         var term = new Terminal({
             cols: 80,
@@ -48,14 +42,11 @@
         term.open(document.getElementById('terminal'));
         term.writeln('Take the Helm!');
         term.writeln('');
-
         var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
             ':' + location.port) : '') + '/');
-
         ws.onopen = function () {
             // new attach.attach(term, ws);
         };
-
         ws.onerror = function (e) {
             // console.log(e);
         };
@@ -64,22 +55,12 @@
     </script>
 </body>
 </html>
-
-
-
 <!-- <body>
     <button id="terminal" onclick="window.location.reload()">Run Program</button>
     <div id="terminal-one">
-
         <div id="image-one">
-
-
         </div>
-
-
-
     </div>
-
     <script>
         var term = new Terminal({
             cols: 80,
@@ -88,14 +69,11 @@
         term.open(document.getElementById('terminal'));
         term.writeln('Running startup command: python3 run.py');
         term.writeln('');
-
         var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
             ':' + location.port) : '') + '/');
-
         ws.onopen = function () {
             new attach.attach(term, ws);
         };
-
         ws.onerror = function (e) {
             console.log(e);
         };
@@ -103,7 +81,6 @@
         document.getElementsByClassName("xterm-helper-textarea")[0].focus();
     </script>
 </body>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,7 +93,7 @@
             <!-- <a><img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag"  href="../assets/images/pirate-queen-flag.jpg" /><a> -->
                 <!-- <a href="../assets/images/pirate-queen-flag.jpg">
                     <img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag" />
-                </a>                
+                </a>
         </div>
     </header>
     <main>
@@ -125,7 +102,6 @@
                 <!-- <a href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg">
                     <img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen" />
                 </a>
-                
         </div>
         <button onclick="window.location.reload()">Click HERE to start Firing your Cannonballs</button>
         <div id="terminal"></div>
@@ -135,13 +111,13 @@
             <li>Better Ships that Battle Better &copy;</li>
             <li>This website was created by Sam O'Brien-Olinger which evolved out of a portfolio project for a third-level education course and has no commercial purpose.</li>
             <li>
-                <a href="https://github.com/SamOBrienOlinger" 
+                <a href="https://github.com/SamOBrienOlinger"
                     target="_blank"
                     aria-label="Link to Sam's GitHub profile (opens in a new tab)"><i
                     class="fa-brands fa-github-alt"></i></a>
             </li>
-            <li>    
-                <a href="https://www.linkedin.com/in/sam-o-brien-olinger-b658283a/" 
+            <li>
+                <a href="https://www.linkedin.com/in/sam-o-brien-olinger-b658283a/"
                     target="_blank"
                     aria-label="Link to Sam's LinkedIn profile (opens in a new tab)"><i
                     class="fa-brands fa-linkedin"></i></a>
@@ -160,17 +136,12 @@
         // term.open(document.getElementById('terminal'));
         // term.writeln('Take the Helm!');
         // term.writeln('');
-        
         // var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
         //     ':' + location.port) : '') + '/');
-        
         // var ws = new WebSocket('ws://8000-samobrienol-betterships-jtqkyun94nw.ws-eu107.gitpod.io');
-
-
         // ws.onopen = function () {
         //     new attach.attach(term, ws);
         // };
-        
         // ws.onerror = function (e) {
         //     console.log(e);
         // };
@@ -179,42 +150,24 @@
 //     </script>
 // </body>
 </html> -->
-
-
 <!-- <!DOCTYPE html>
 <html lang="en">
-
     <head>
-        
       <title>Our Flag Means Infinite Loop of Doom</title>
-        
     </head>
-
 <body>
-
     <header>
       <h1>!Our Flag Means Infinite Loop of Doom!</h1>
-
         <div>
-
           <a><img id="pirate-queen-flag" src="https://www.goodreads.com/book/show/1383974.Pirate_Queen" aria-label="image of pirate queen flag"  href="../assets/images/pirate-queen-flag.jpg" /><a>
-  
         </div>
-
     </header>
-  
     <main>
-
         <div>
-
             <a><img id="pirate-queen" src="https://www.irelandbeforeyoudie.com/grace-omalley-the-story-of-irelands-famous-pirate-queen/" aria-label="image of grace-omalley-ireland's-famous-pirate-queen"  href="../assets/images/grace-omalley_-the-story-of-irelands-famous-pirate-queen-1068x534.jpg" /><a>
-
-        </div>    
-
-
+        </div>
     <button onclick="window.location.reload()">Fire Your Cannonballs</button>
     <div id="terminal"></div>
-
         <script>
             // Ensure that Terminal is defined from xterm.js
             var term = new Terminal({
@@ -224,14 +177,11 @@
             term.open(document.getElementById('terminal'));
             term.writeln('Take the Helm!');
             term.writeln('');
-
             var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
                 ':' + location.port) : '') + '/');
-
             ws.onopen = function () {
                 new attach.attach(term, ws);
             };
-
             ws.onerror = function (e) {
                 console.log(e);
             };
@@ -239,26 +189,23 @@
             document.getElementsByClassName("xterm-helper-textarea")[0].focus();
         </script>
     </main>
-    
     <footer>
         <ul>
             <li>Better Ships that Battle Better &copy;</li>
-
             <li>This website was created by Sam O'Brien-Olinger which evolved out of a portfolio project for a third-level education course and has no commercial purpose.</li>
             <li>
-                <a href="https://github.com/SamOBrienOlinger" 
+                <a href="https://github.com/SamOBrienOlinger"
                     target="_blank"
                     aria-label="Link to Sam's GitHub profile (opens in a new tab)"><i
                     class="fa-brands fa-github-alt"></i></a>
             </li>
-            <li>    
-                <a href="https://www.linkedin.com/in/sam-o-brien-olinger-b658283a/" 
+            <li>
+                <a href="https://www.linkedin.com/in/sam-o-brien-olinger-b658283a/"
                     target="_blank"
                     aria-label="Link to Sam's LinkedIn profile (opens in a new tab)"><i
                     class="fa-brands fa-linkedin"></i></a>
             </li>
         </ul>
     </footer>
-
   </body>
 </html> -->

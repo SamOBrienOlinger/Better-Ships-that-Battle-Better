@@ -6,7 +6,6 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
-
 # core.Microsoft*
 # core.mongo*
 # core.python*
