@@ -16,7 +16,7 @@ A pirate-themed Django naval-combat project with player accounts and game-histor
 
 ## Getting started
 
-Requires Python, pip and a virtual environment. The repository records `3.11` in [.python-version](.python-version). Dependency pins in older projects may need a compatible Python environment; this README does not upgrade them.
+Requires Git, Python, pip and a virtual environment. The repository records `3.11` in [.python-version](.python-version). Dependency pins in older projects may need a compatible Python environment; this README does not upgrade them.
 
 ```bash
 git clone https://github.com/SamOBrienOlinger/Better-Ships-that-Battle-Better.git
