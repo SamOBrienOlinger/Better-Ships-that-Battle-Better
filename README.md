@@ -4,7 +4,7 @@ A pirate-themed Django naval-combat project with player accounts and game-histor
 
 **Python · Django**
 
-[Getting started](#getting-started) · [Repository guide](#repository-guide) · [Checks](#checks-and-review) · [Credits](#credits-and-reuse)
+[Getting started](#getting-started) · [Data model](#entity-relationship-diagram) · [Repository guide](#repository-guide) · [Checks](#checks-and-review) · [Credits](#credits-and-reuse)
 
 ## What you can explore
 
@@ -13,6 +13,38 @@ A pirate-themed Django naval-combat project with player accounts and game-histor
 - Battle statistics and dashboard templates.
 
 > **Project notes:** The Django project is nested in better_ships_that_battle_better/. Historical Heroku links in the project record describe earlier deployments and are not a service-availability guarantee.
+
+## Entity relationship diagram
+
+A player profile belongs to one user and can select a pirate queen. Each saved game belongs to one profile and records the outcome, shots fired and ships sunk. [Django models](better_ships_that_battle_better/pirates/models.py)
+
+```mermaid
+erDiagram
+    accTitle: Naval battle accounts and saved games
+    accDescr: A user can have one player profile. A profile can select a pirate queen and record multiple game results.
+    User ||..o| "User Profile" : owns
+    "Pirate Queen" |o..o{ "User Profile" : "selected by"
+    "User Profile" ||..o{ Game : plays
+
+    "User Profile" {
+        bigint id PK
+        int user_id FK,UK
+        bigint chosen_pirate_queen_id FK
+        string pirate_name
+    }
+    "Pirate Queen" {
+        bigint id PK
+        string name
+        string region
+    }
+    Game {
+        bigint id PK
+        bigint player_id FK
+        string result
+        int shots_fired
+        int ships_sunk
+    }
+```
 
 ## Getting started
 
